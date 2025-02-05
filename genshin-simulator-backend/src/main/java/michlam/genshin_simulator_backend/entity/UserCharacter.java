@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import michlam.genshin_simulator_backend.entity.keys.UserCharacterKey;
 
 @Getter
 @Setter
@@ -13,9 +14,6 @@ import lombok.Setter;
 @Entity
 @Table(name = "user_characters")
 public class UserCharacter {
-    @Id
-    private Long user_id;
-
-    @Id
-    private String character_name;
+    @EmbeddedId
+    private UserCharacterKey userCharacterKey;
 }

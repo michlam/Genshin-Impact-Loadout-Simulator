@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import michlam.genshin_simulator_backend.entity.keys.UserTeamKey;
 
 @Getter
 @Setter
@@ -13,11 +14,8 @@ import lombok.Setter;
 @Entity
 @Table(name = "user_teams")
 public class UserTeam {
-    @Id
-    private Long user_id;
-
-    @Id
-    private Integer team_num;
+    @EmbeddedId
+    private UserTeamKey userTeamKey;
 
     private String character_name_1;
     private String character_name_2;
