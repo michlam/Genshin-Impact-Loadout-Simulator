@@ -9,7 +9,7 @@ For the first phase, I plan to start small and only implement the basic teams an
 - Users can create, login to, and logout of their accounts
 - Users can add a character to their account
 - Users can create teams with up to four characters
-- Userss can create up to eight teams
+- Users can create up to eight teams
 
 ### Technologies Used
 - MySQL database setup for user accounts, characters, and teams

@@ -24,7 +24,6 @@ public class UserController {
     // Build Get User By ID REST API
     @GetMapping // Maps get to this method
     public ResponseEntity<UserDto> getUserById(@RequestBody Long userId) {
-        System.out.println(userId);
         UserDto userDto = userService.getUserById(userId);
         return ResponseEntity.ok(userDto);
     }
