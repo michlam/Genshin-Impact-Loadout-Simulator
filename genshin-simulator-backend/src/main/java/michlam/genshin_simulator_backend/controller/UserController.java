@@ -2,6 +2,7 @@ package michlam.genshin_simulator_backend.controller;
 
 import lombok.AllArgsConstructor;
 import michlam.genshin_simulator_backend.dto.UserDto;
+import michlam.genshin_simulator_backend.entity.User;
 import michlam.genshin_simulator_backend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,13 @@ public class UserController {
     public ResponseEntity<UserDto> getUserById(@RequestBody Long userId) {
         System.out.println(userId);
         UserDto userDto = userService.getUserById(userId);
+        return ResponseEntity.ok(userDto);
+    }
+
+    // Build Update User REST API
+    @PutMapping // Maps put to this method
+    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto updatedUser) {
+        UserDto userDto = userService.updateUser(updatedUser);
         return ResponseEntity.ok(userDto);
     }
 }
