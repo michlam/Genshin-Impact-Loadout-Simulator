@@ -16,3 +16,8 @@ For the first phase, I plan to start small and only implement the basic teams an
 - Java and Spring backend, with the required REST APIs
 - HTML, CSS, and JavaScript frontend that consumes the REST APIs
 
+
+## Citations
+The assets used are from Genshin Impact, allowed for perssonal non-commercial use, as laid out in https://www.hoyolab.com/article/143107.
+- © All rights reserved by HoYoverse. Other properties belong to their respective owners.
+
