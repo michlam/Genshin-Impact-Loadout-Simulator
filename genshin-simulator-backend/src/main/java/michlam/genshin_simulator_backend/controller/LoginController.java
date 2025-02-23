@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
     private LoginService loginService;
 
-    // Build Get User By ID REST API
+    // Build Login User API
     @GetMapping // Maps get to this method
     public ResponseEntity<Boolean> login(@RequestBody UserDto userDto) {
         String username = userDto.getUsername();
