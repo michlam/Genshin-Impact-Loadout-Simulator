@@ -3,6 +3,7 @@ package michlam.genshin_simulator_backend.service.impl;
 import lombok.AllArgsConstructor;
 import michlam.genshin_simulator_backend.dto.BaseCharacterDto;
 import michlam.genshin_simulator_backend.entity.BaseCharacter;
+import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import michlam.genshin_simulator_backend.mapper.Mapper;
 import michlam.genshin_simulator_backend.repository.BaseCharacterRepository;
 import michlam.genshin_simulator_backend.service.BaseCharacterService;

@@ -9,5 +9,4 @@ public class GenshinSimulatorBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GenshinSimulatorBackendApplication.class, args);
 	}
-
 }
