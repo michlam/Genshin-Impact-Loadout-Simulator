@@ -5,6 +5,7 @@
     /* COLOURS */
     --ivory: #eaecc6;
     --cinnabar: #e94f37;
+    --dark-cinnabar: #cf3d27;
     --onyx: #393e41;
     --steel-blue: #3f88c5;
     --keppel: #44bba4;
@@ -20,6 +21,24 @@ header {
     align-items: center;
 }
 
+nav {
+    margin-right: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.navlink {
+    padding: 10px 30px;
+    border-radius: 5px;
+
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: var(--ivory);
+}
+
+.navlink:hover {
+    background-color: var(--dark-cinnabar);
+}
 
 .site-logo {
     margin: 0px 0px 0px 5%;
@@ -46,8 +65,12 @@ footer > section {
 }
 
 .footer-left > h1 {
-    margin-bottom: 225px;
+    margin-bottom: 235px;
     font-size: 2.2rem;
+}
+
+.footer-left > p {
+    font-size: 0.9rem;
 }
 
 .footer-right {
@@ -60,4 +83,13 @@ footer > section {
 
 .footer-right > p {
     margin: 3px 0px;
+}
+
+.footer-right > p > a {
+    text-decoration: none;
+    color: var(--steel-blue);
+}
+
+.footer-right > p > a:hover {
+    text-decoration: underline;
 }

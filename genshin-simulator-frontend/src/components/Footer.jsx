@@ -14,8 +14,8 @@ export default function Footer() {
 
                 <div className='footer-right'>
                     <h4>Links</h4>
-                    <p>LinkedIn</p>
-                    <p>GitHub</p>
+                    <p><a href="https://www.linkedin.com/in/michlam812/" target='_blank'>LinkedIn</a></p>
+                    <p><a href="https://github.com/michlam" target="_blank">GitHub</a></p>
                 </div>
             </section>
         </footer>
