@@ -1,6 +1,7 @@
 package michlam.genshin_simulator_backend.controller;
 
 import lombok.AllArgsConstructor;
+import michlam.genshin_simulator_backend.dto.BaseCharacterDto;
 import michlam.genshin_simulator_backend.dto.UserDto;
 import michlam.genshin_simulator_backend.entity.BaseCharacter;
 import michlam.genshin_simulator_backend.service.BaseCharacterService;
@@ -17,10 +18,9 @@ public class BaseCharacterController {
 
     // Build Get Base Characters API
     @GetMapping // Maps get to this method
-    public ResponseEntity<List<BaseCharacter>> getBaseCharacters() {
-        System.out.println((ResponseEntity.ok(baseCharacterService.getBaseCharacters())));
-        return null;
+    public ResponseEntity<List<BaseCharacterDto>> getBaseCharacters() {
+        List<BaseCharacterDto> baseCharacterDtos = baseCharacterService.getBaseCharacters();
+        return ResponseEntity.ok(baseCharacterDtos);
     }
 
-    // Build get
 }
