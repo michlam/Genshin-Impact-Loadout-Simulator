@@ -1,22 +1,18 @@
 import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import LoginComponent from './components/LoginComponent';
-import HomeComponent from './components/HomeComponent';
-import FooterComponent from './components/FooterComponent';
+import { BrowserRouter, createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Routes } from 'react-router-dom'
+import Layout from './components/Layout.jsx'
+
 
 function App() {
+  const router = createBrowserRouter(createRoutesFromElements(
+    <Route path='/' element={<Layout />}>
 
+    </Route>
+
+  ))
 
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element = {<HomeComponent />} />
-          <Route path='/login' element = {<LoginComponent />} />
-        </Routes>
-        <FooterComponent />
-      </BrowserRouter>
-    </>
+    <RouterProvider router={router} />
   )
 }
 
