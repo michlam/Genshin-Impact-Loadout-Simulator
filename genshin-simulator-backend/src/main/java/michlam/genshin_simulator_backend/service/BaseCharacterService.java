@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface BaseCharacterService {
     List<BaseCharacterDto> getBaseCharacters();
+    BaseCharacterDto getBaseCharacterByName(String name);
 }

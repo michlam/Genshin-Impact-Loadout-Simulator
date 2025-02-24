@@ -2,9 +2,10 @@ package michlam.genshin_simulator_backend.controller;
 
 import lombok.AllArgsConstructor;
 import michlam.genshin_simulator_backend.dto.BaseCharacterDto;
-import michlam.genshin_simulator_backend.dto.UserDto;
-import michlam.genshin_simulator_backend.entity.BaseCharacter;
+import michlam.genshin_simulator_backend.exception.ErrorResponse;
+import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import michlam.genshin_simulator_backend.service.BaseCharacterService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,15 +13,26 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/base-characters") // Used to denote the base URL for any user-based apis.
 public class BaseCharacterController {
     private BaseCharacterService baseCharacterService;
 
     // Build Get Base Characters API
-    @GetMapping // Maps get to this method
+    @GetMapping("/api/base-characters")
     public ResponseEntity<List<BaseCharacterDto>> getBaseCharacters() {
         List<BaseCharacterDto> baseCharacterDtos = baseCharacterService.getBaseCharacters();
         return ResponseEntity.ok(baseCharacterDtos);
+    }
+
+    // Build Get Base Character By Name REST API
+    @GetMapping("/api/base-characters/{name}")
+    public ResponseEntity<Object> getBaseCharacterByName(@PathVariable String name) {
+        try {
+            BaseCharacterDto baseCharacterDto = baseCharacterService.getBaseCharacterByName(name);
+            return ResponseEntity.ok(baseCharacterDto);
+        } catch (ResourceNotFoundException e) {
+            ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
     }
 
 }

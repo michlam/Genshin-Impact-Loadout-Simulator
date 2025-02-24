@@ -3,6 +3,7 @@ package michlam.genshin_simulator_backend.service.impl;
 import lombok.AllArgsConstructor;
 import michlam.genshin_simulator_backend.dto.BaseCharacterDto;
 import michlam.genshin_simulator_backend.entity.BaseCharacter;
+import michlam.genshin_simulator_backend.entity.User;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import michlam.genshin_simulator_backend.mapper.Mapper;
 import michlam.genshin_simulator_backend.repository.BaseCharacterRepository;
@@ -28,4 +29,12 @@ public class BaseCharacterServiceImpl implements BaseCharacterService {
 
         return baseCharacterDtos;
     }
+
+    @Override
+    public BaseCharacterDto getBaseCharacterByName(String name) {
+        BaseCharacter baseCharacter = baseCharacterRepository.findByName(name).orElseThrow(() ->
+                new ResourceNotFoundException("Base character does not exist with the given name: " + name));
+        return Mapper.mapToBaseCharacterDto(baseCharacter);
+    }
+
 }
