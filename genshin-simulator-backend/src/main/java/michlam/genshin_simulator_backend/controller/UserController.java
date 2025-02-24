@@ -1,6 +1,7 @@
 package michlam.genshin_simulator_backend.controller;
 
 import lombok.AllArgsConstructor;
+import michlam.genshin_simulator_backend.dto.UserCharacterDto;
 import michlam.genshin_simulator_backend.dto.UserDto;
 import michlam.genshin_simulator_backend.entity.User;
 import michlam.genshin_simulator_backend.exception.DuplicateResourceException;
@@ -10,6 +11,9 @@ import michlam.genshin_simulator_backend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @AllArgsConstructor
 @RestController
@@ -53,6 +57,36 @@ public class UserController {
         } catch (DuplicateResourceException e) {
             ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+    }
+
+    // Build Unlock User Character REST API
+    @PostMapping("/characters")
+    public ResponseEntity<Object> unlockUserCharacter(@RequestBody Map<String, String> json) {
+        Long id = Long.parseLong(json.get("id"));
+        String name = json.get("name");
+
+        try {
+            UserCharacterDto userCharacterDto = userService.unlockUserCharacter(id, name);
+            return ResponseEntity.ok(userCharacterDto);
+        } catch (ResourceNotFoundException e) {
+            ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        } catch (DuplicateResourceException e) {
+            ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
+    }
+
+    // Build Get User Characters By ID REST API
+    @GetMapping("/characters") // Maps get to this method
+    public ResponseEntity<Object> getUserCharactersById(@RequestBody Long userId) {
+        try {
+            List<String> userCharacterDtos = userService.getUserCharactersById(userId);
+            return ResponseEntity.ok(userCharacterDtos);
+        } catch (ResourceNotFoundException e) {
+            ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
 }
