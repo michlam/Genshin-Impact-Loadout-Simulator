@@ -10,13 +10,12 @@
   --keppel: #44bba4;
 }
 
-body, #root {
+body, #root, .site-wrapper {
   display: flex;
   flex-direction: column;
 
   width: 100dvw;
   height: 100dvh;
-  justify-content: center;
   align-items: center;
   margin: 0;  
 

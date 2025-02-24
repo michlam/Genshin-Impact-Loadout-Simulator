@@ -1,5 +1,16 @@
+import "./Components.css";
+import { Link } from "react-router-dom";
+
 export default function Header() {
     return (
-        <h1>This is the header</h1>
+        <>
+            <header>
+                <Link className="site-logo" to="/">GENSHIN LOADOUTS</Link>
+                <button>Sign in</button>
+                
+            </header>
+            <hr className="header-rule"/>
+        </>
+
     )
 }
