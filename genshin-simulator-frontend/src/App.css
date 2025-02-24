@@ -22,3 +22,8 @@ body, #root, .site-wrapper {
   background-color: var(--ivory);
 }
 
+main {
+  /* Temporary */
+  height: 400px;
+}
+
