@@ -14,8 +14,7 @@ body, #root, .site-wrapper {
   display: flex;
   flex-direction: column;
 
-  width: 100dvw;
-  height: 100dvh;
+  width: 100%;
   align-items: center;
   margin: 0;  
 
@@ -24,6 +23,6 @@ body, #root, .site-wrapper {
 
 main {
   /* Temporary */
-  height: 400px;
+  height: 700px;
 }
 
