@@ -17,6 +17,7 @@ import java.util.Map;
 
 @AllArgsConstructor
 @RestController
+@CrossOrigin(origins = "http://localhost:3000") // Allow requests from this origin
 @RequestMapping("/api/users") // Used to denote the base URL for any user-based apis.
 public class UserController {
     private UserService userService;

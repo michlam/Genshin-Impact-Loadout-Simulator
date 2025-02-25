@@ -1,5 +1,21 @@
-import { Form, useNavigation } from "react-router-dom";
+import { Form, redirect, useNavigation } from "react-router-dom";
 import "./Login.css"
+import { loginUser } from "../services/LoginService";
+
+export async function action({ request }) {
+    const formData = await request.formData();
+    const username = formData.get('username');
+    const password = formData.get('password');
+    const pathname = new URL(request.url).searchParams.get("redirectTo") || "/teams";
+
+    try {
+        const data = await loginUser(username, password);
+        console.log(data);
+        return redirect(pathname);
+    } catch (err) {
+        return err.message;
+    }
+}
 
 
 export default function Login() {

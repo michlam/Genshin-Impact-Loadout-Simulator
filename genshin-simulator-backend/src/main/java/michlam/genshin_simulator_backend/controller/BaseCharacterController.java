@@ -13,6 +13,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
+@CrossOrigin(origins = "http://localhost:3000") // Allow requests from this origin
 public class BaseCharacterController {
     private BaseCharacterService baseCharacterService;
 
