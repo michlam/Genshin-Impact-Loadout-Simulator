@@ -2,6 +2,7 @@ import './App.css'
 import { BrowserRouter, createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Routes } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
 import Login, {action as loginAction} from './pages/Login.jsx'
+import SignUp from './pages/SignUp.jsx'
 import NotFound from './pages/NotFound.jsx'
 import Landing from './pages/Landing'
 
@@ -11,6 +12,7 @@ function App() {
     <Route path='/' element={<Layout />}>
       <Route index element={<Landing />} />
       <Route path="login" action={loginAction} element={<Login />} />
+      <Route path="signUp" element={<SignUp />} />
       <Route path="*" element={<NotFound />} />
     </Route>
 

@@ -36,7 +36,7 @@ export default function Login() {
                     </button>
                 </Form>
 
-                <Link to={"/createAccount"} className="login-container-link">
+                <Link to={"/signUp"} className="login-container-link">
                     Don't have an account?
                 </Link>
             </div>
