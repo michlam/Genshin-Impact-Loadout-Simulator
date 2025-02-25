@@ -10,3 +10,12 @@ export const signUpUser = (username, password) => {
 
     return axios.post(REST_API_BASE_URL, signUpBody);
 }
+
+export const getUserCharactersById = (userId) => {
+    try {
+        return axios.post(REST_API_BASE_URL + "/characters", userId);
+    } catch(e) {
+        console.log(e);
+        return null;
+    }
+}

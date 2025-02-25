@@ -81,7 +81,9 @@ public class UserController {
 
     // Build Get User Characters By ID REST API
     @PostMapping("/characters") // Maps get to this method
-    public ResponseEntity<Object> getUserCharactersById(@RequestBody Long userId) {
+    public ResponseEntity<Object> getUserCharactersById(@RequestBody Map<String, String> json) {
+        Long userId = Long.parseLong(json.get("id"));
+
         try {
             List<String> userCharacterDtos = userService.getUserCharactersById(userId);
             return ResponseEntity.ok(userCharacterDtos);
