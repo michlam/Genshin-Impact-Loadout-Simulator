@@ -1,6 +1,14 @@
+@font-face {
+    font-family: "Genshin";
+    src: url('./assets/fonts/Genshin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 #root {
     font-size: 16px;
-    font-family: "Inter";
+    font-family: "Genshin";
   
     /* COLOURS */
     --ivory: #eaecc6;
@@ -10,7 +18,7 @@
     --keppel: #44bba4;
 
     --light-ivory: #f2fedc;
-  }
+}
 
 main.login {
     display: flex;
@@ -52,12 +60,12 @@ main.login {
 
 .login-form > input {
     margin-bottom: 20px;
-    padding: 13px 150px 13px 18px;
+    padding: 13px 40px 13px 18px;
 
     border-radius: 8px;
     border: 1px solid rgba(148, 148, 148, 0.418);
 
-    font-family: "Inter";
+    font-family: "Genshin";
     font-size: 1rem;
     color: var(--onyx);
 }
@@ -69,7 +77,7 @@ main.login {
     border-radius: 8px;
     border: none;
 
-    font-family: "Inter";
+    font-family: "Genshin";
     font-size: 1rem;
     color: var(--ivory);
     cursor: pointer;

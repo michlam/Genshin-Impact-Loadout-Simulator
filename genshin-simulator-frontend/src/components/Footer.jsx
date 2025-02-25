@@ -8,7 +8,7 @@ export default function Footer() {
                     <h4>GENSHIN LOADOUTS</h4>
                     <h1>Experiment with every team combination!</h1>
                     <p className='attribution'>
-                        2025 Michael Lam. Assets from HoYoverse. All rights reserved.
+                        2025 Michael Lam. Assets from HoYoverse. All rights reserved to their respective owners.
                     </p>
                 </div>
 
