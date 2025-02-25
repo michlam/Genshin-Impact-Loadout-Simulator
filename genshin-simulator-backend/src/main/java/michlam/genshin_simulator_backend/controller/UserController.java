@@ -62,7 +62,7 @@ public class UserController {
     }
 
     // Build Unlock User Character REST API
-    @PostMapping("/characters")
+    @PostMapping("/characters/unlock")
     public ResponseEntity<Object> unlockUserCharacter(@RequestBody Map<String, String> json) {
         Long id = Long.parseLong(json.get("id"));
         String name = json.get("name");
@@ -80,7 +80,7 @@ public class UserController {
     }
 
     // Build Get User Characters By ID REST API
-    @GetMapping("/characters") // Maps get to this method
+    @PostMapping("/characters") // Maps get to this method
     public ResponseEntity<Object> getUserCharactersById(@RequestBody Long userId) {
         try {
             List<String> userCharacterDtos = userService.getUserCharactersById(userId);
