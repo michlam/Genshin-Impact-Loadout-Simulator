@@ -30,9 +30,19 @@ main.login {
 }
 
 .login-container > h1 {
+    margin-bottom: 15px;
+
     font-weight: 450;
     font-size: 2.5rem;
     color: var(--onyx);
+}
+
+.login-container > h4 {
+    margin-top: 0px;
+
+    font-weight: 400;
+    font-size: 1rem;
+    color: red;
 }
 
 .login-form {

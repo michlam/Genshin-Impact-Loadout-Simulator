@@ -1,4 +1,4 @@
-import { Form, redirect, useNavigation } from "react-router-dom";
+import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import "./Login.css"
 import { loginUser } from "../services/LoginService";
 
@@ -10,7 +10,6 @@ export async function action({ request }) {
 
     try {
         const data = await loginUser(username, password);
-        console.log(data);
         return redirect(pathname);
     } catch (err) {
         return err.message;
@@ -19,12 +18,15 @@ export async function action({ request }) {
 
 
 export default function Login() {
+    const error = useActionData();
     const navigation = useNavigation();
 
     return (
         <main className="login">
             <div className="login-container">
                 <h1>Log In</h1>
+                {error ? <h4>Incorrect credentials. Please try again.</h4> : null}
+
                 <Form method="post" className="login-form" replace>
                     <input name="username" type="username" placeholder="Username" />
                     <input name="password" type="password" placeholder="Password" />
