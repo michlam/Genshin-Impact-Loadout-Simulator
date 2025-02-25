@@ -13,7 +13,7 @@ export default function Footer() {
                 </div>
 
                 <div className='footer-right'>
-                    <h4>Links</h4>
+                    <h4>Socials</h4>
                     <p><a href="https://www.linkedin.com/in/michlam812/" target='_blank'>LinkedIn</a></p>
                     <p><a href="https://github.com/michlam" target="_blank">GitHub</a></p>
                 </div>

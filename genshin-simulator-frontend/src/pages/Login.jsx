@@ -23,15 +23,17 @@ export default function Login() {
 
     return (
         <main className="login">
-            <h1>Log In</h1>
-            <Form method="post" className="login-form" replace>
-                <input name="username" type="username" placeholder="Username" />
-                <input name="password" type="password" placeholder="Password" />
+            <div className="login-container">
+                <h1>Log In</h1>
+                <Form method="post" className="login-form" replace>
+                    <input name="username" type="username" placeholder="Username" />
+                    <input name="password" type="password" placeholder="Password" />
 
-                <button>
-                    {navigation.state === "submitting" ? "Logging in..." : "Log in"}
-                </button>
-            </Form>
+                    <button>
+                        {navigation.state === "submitting" ? "Logging in..." : "Log in"}
+                    </button>
+                </Form>
+            </div>
         </main>
     )
 }
