@@ -6,7 +6,7 @@ export default function Footer() {
             <section>
                 <div className='footer-left'>
                     <h4>GENSHIN LOADOUTS</h4>
-                    <h1>Experiment all of your team combinations!</h1>
+                    <h1>Experiment with every team combination!</h1>
                     <p className='attribution'>
                         2025 Michael Lam. Assets from HoYoverse. All rights reserved.
                     </p>

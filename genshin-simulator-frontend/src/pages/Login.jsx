@@ -1,4 +1,4 @@
-import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
+import { Form, Link, redirect, useActionData, useNavigation } from "react-router-dom";
 import "./Login.css"
 import { loginUser } from "../services/LoginService";
 
@@ -35,6 +35,10 @@ export default function Login() {
                         {navigation.state === "submitting" ? "Logging in..." : "Log in"}
                     </button>
                 </Form>
+
+                <Link to={"/createAccount"} className="login-container-link">
+                    Don't have an account?
+                </Link>
             </div>
         </main>
     )
