@@ -10,6 +10,8 @@ export async function action({ request }) {
 
     try {
         const data = await loginUser(username, password);
+
+        // WE ARE FAKING THE LOGIN WITH LOCAL STORAGE FOR NOW
         localStorage.setItem("loggedin", true);
         localStorage.setItem("username", username);
         return redirect(pathname);
