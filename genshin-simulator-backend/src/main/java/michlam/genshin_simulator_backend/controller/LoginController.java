@@ -21,10 +21,22 @@ public class LoginController {
     // Build Login User API
     @CrossOrigin(origins = "http://localhost:3000") // Allow requests from this origin
     @PostMapping // Maps get to this method
-    public ResponseEntity<Boolean> login(@RequestBody UserDto userDto) {
+    public ResponseEntity<Object> login(@RequestBody UserDto userDto) {
         String username = userDto.getUsername();
         String password = userDto.getPassword();
 
-        return ResponseEntity.ok(loginService.login(username, password));
+        try {
+            if (loginService.login(username, password)) {
+                // In the future, create a JWT for user sessions.
+                String response = "Login successful";
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            } else {
+                String response = "Invalid credentials";
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+            }
+        } catch (Exception e) {
+            ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
     }
 }
