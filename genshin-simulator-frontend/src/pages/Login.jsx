@@ -1,6 +1,7 @@
 import { Form, Link, redirect, useActionData, useNavigation } from "react-router-dom";
 import "./Login.css"
 import { loginUser } from "../services/LoginService";
+import { loginHelper } from "../utils";
 
 export async function action({ request }) {
     const formData = await request.formData();
@@ -10,10 +11,9 @@ export async function action({ request }) {
 
     try {
         const data = await loginUser(username, password);
+        const userId = parseInt(data.data.split(" ")[0]);
 
-        // WE ARE FAKING THE LOGIN WITH LOCAL STORAGE FOR NOW
-        localStorage.setItem("loggedin", true);
-        localStorage.setItem("username", username);
+        loginHelper(userId, username);
         return redirect(pathname);
     } catch (err) {
         return err.message;

@@ -12,3 +12,18 @@ export async function requireAuth(request) {
         )
     }
 }
+
+ // WE ARE FAKING THE LOGIN WITH LOCAL STORAGE FOR NOW
+export function loginHelper(userId, username) {
+    localStorage.setItem("loggedin", true);
+    localStorage.setItem("userId", userId);
+    localStorage.setItem("username", username);
+}
+
+export function logoutHelper() {
+    localStorage.clear();
+}
+
+export function getUserIdHelper() {
+    return localStorage.getItem("userId");
+}

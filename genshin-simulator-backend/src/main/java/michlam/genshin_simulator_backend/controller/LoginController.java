@@ -7,6 +7,7 @@ import michlam.genshin_simulator_backend.exception.DuplicateResourceException;
 import michlam.genshin_simulator_backend.exception.ErrorResponse;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import michlam.genshin_simulator_backend.service.LoginService;
+import michlam.genshin_simulator_backend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/login") // Used to denote the base URL for any user-based apis.
 public class LoginController {
     private LoginService loginService;
+    private UserService userService;
 
     // Build Login User API
     @CrossOrigin(origins = "http://localhost:3000") // Allow requests from this origin
@@ -28,7 +30,7 @@ public class LoginController {
         try {
             if (loginService.login(username, password)) {
                 // In the future, create a JWT for user sessions.
-                String response = "Login successful";
+                String response = userService.getIdByUsername(username) + " Login successful";
                 return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
                 String response = "Invalid credentials";

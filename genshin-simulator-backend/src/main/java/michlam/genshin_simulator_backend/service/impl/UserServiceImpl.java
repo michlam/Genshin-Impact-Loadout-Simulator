@@ -91,4 +91,13 @@ public class UserServiceImpl implements UserService {
 
         return userCharacterRepository.findCharactersById(userId);
     }
+
+    @Override
+    public Long getIdByUsername(String username) {
+        User user = userRepository.findByUsername(username).orElseThrow(() ->
+            new ResourceNotFoundException("User does not exist with the given username: " + username));
+
+        return user.getId();
+    }
+
 }

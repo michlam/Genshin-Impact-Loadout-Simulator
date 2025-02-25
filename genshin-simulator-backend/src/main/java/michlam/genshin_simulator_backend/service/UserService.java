@@ -12,4 +12,7 @@ public interface UserService{
 
     UserCharacterDto unlockUserCharacter(Long userId, String name);
     List<String> getUserCharactersById(Long userId);
+
+
+    Long getIdByUsername(String username);
 }
