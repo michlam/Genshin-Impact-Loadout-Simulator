@@ -5,6 +5,7 @@ import Login, {action as loginAction} from './pages/Login.jsx'
 import SignUp, {action as signUpAction} from './pages/SignUp.jsx'
 import NotFound from './pages/NotFound.jsx'
 import Landing from './pages/Landing'
+import Teams, {loader as teamsLoader} from './pages/Teams'
 
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
       <Route index element={<Landing />} />
       <Route path="login" action={loginAction} element={<Login />} />
       <Route path="signUp" action={signUpAction} element={<SignUp />} />
+
+      <Route path="teams" loader={teamsLoader} element={<Teams />} />
       <Route path="*" element={<NotFound />} />
     </Route>
 

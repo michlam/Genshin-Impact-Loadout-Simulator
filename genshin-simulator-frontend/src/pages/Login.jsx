@@ -10,6 +10,8 @@ export async function action({ request }) {
 
     try {
         const data = await loginUser(username, password);
+        localStorage.setItem("loggedin", true);
+        localStorage.setItem("username", username);
         return redirect(pathname);
     } catch (err) {
         return err.message;
