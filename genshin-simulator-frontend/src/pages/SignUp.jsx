@@ -1,14 +1,30 @@
-import { Form, Link, useActionData, useNavigation } from "react-router-dom"
+import { Form, Link, redirect, useActionData, useNavigation } from "react-router-dom"
+import { signUpUser } from "../services/UserService";
 import "./Login.css"
 
+export async function action({ request }) {
+    const formData = await request.formData();
+    const username = formData.get('username');
+    const password = formData.get('password');
+
+    try {
+        const data = await signUpUser(username, password);
+        return redirect("/");
+    } catch (err) {
+        return err.message;
+    }
+}
+
+
 export default function SignUp() {
-    // const error = useActionData();
+    const error = useActionData();
     const navigation = useNavigation();
 
     return (
         <main className="login">
             <div className="login-container">
                 <h1>Sign Up</h1>
+                {error ? <h4>Please try another username.</h4> : null}
                 
                 <Form method="post" className="login-form" replace>
                     <input name="username" type="username" placeholder="Username" />
