@@ -2,6 +2,7 @@ import { getBaseCharacters } from "../services/BaseCharacterService";
 import { getUserCharactersById } from "../services/UserService";
 import { getUserIdHelper, requireAuth } from "../utils";
 import { useLoaderData, Await } from "react-router-dom";
+import CharListItem from "../components/CharListItem.jsx";
 import "./Characters.css"
 
 export async function loader({ request }) {
@@ -20,7 +21,7 @@ export async function loader({ request }) {
 
 function renderBaseCharacters(chars) {
     const baseCharElements = chars.map((char) => (
-        <p key={char.name }>{char.name}</p>
+        <CharListItem key={char.name} name={char.name} star={char.star} /> 
     ))
 
     return baseCharElements;

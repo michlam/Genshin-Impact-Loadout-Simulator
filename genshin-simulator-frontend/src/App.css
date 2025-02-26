@@ -30,6 +30,6 @@ body, #root, .site-wrapper {
 
 main {
   /* Temporary */
-  height: 700px;
+  min-height: 700px;
 }
 

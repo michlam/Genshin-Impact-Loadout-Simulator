@@ -26,11 +26,41 @@ main.characters {
 }
 
 .character-list {
-    background-color: white;
+    background-color: var(--light-ivory);
     width: 65dvw;
+    padding: 40px 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 50px 3px rgba(153, 153, 153, 0.034);
 
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px 20px;
+}
+
+.char-list-item {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.char-img-container {
+    height: 100px;
+    padding: 0;
+}
+
+.four-star {
+    background: rgb(0,249,255);
+    background: radial-gradient(at bottom right, rgba(0,249,255,1) 0%, rgba(171,112,213,1) 28%, rgba(173,35,197,1) 55%, rgba(68,1,87,1) 100%);
+}
+
+.five-star {
+    background: rgb(9,255,103);
+    background: radial-gradient(at bottom right, rgba(9,255,103,1) 0%, rgba(164,160,68,1) 42%, rgba(162,85,12,1) 100%); 
+}
+
+.char-img-container > img {
+    padding: 0;
+    width: 100px;
 }
 
 
