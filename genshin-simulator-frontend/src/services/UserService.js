@@ -12,10 +12,9 @@ export const signUpUser = (username, password) => {
 }
 
 export const getUserCharactersById = (userId) => {
-    try {
-        return axios.post(REST_API_BASE_URL + "/characters", userId);
-    } catch(e) {
-        console.log(e);
-        return null;
+    const body = {
+        "id": userId
     }
+
+    return axios.post(REST_API_BASE_URL + "/characters", body);
 }

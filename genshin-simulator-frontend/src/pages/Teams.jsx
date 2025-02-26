@@ -2,7 +2,6 @@ import { requireAuth } from "../utils";
 
 export async function loader({ request }) {
     const data = await requireAuth(request);
-    console.log(data);
     return null;
 }
 
