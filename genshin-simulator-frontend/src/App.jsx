@@ -7,17 +7,18 @@ import NotFound from './pages/NotFound.jsx'
 import Landing from './pages/Landing'
 import Teams, {loader as teamsLoader} from './pages/Teams'
 import Characters, {loader as charactersLoader} from './pages/Characters'
+import Error from './components/Error'
 
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route index element={<Landing />} />
-      <Route path="login" action={loginAction} element={<Login />} />
-      <Route path="signUp" action={signUpAction} element={<SignUp />} />
+      <Route path="login" action={loginAction} element={<Login />} errorElement={<Error />}/>
+      <Route path="signUp" action={signUpAction} element={<SignUp />} errorElement={<Error />}/>
 
-      <Route path="teams" loader={teamsLoader} element={<Teams />} />
-      <Route path="characters" loader={charactersLoader} element={<Characters />} />
+      <Route path="teams" loader={teamsLoader} element={<Teams />} errorElement={<Error />}/>
+      <Route path="characters" loader={charactersLoader} element={<Characters />} errorElement={<Error />}/>
 
       <Route path="*" element={<NotFound />} />
     </Route>

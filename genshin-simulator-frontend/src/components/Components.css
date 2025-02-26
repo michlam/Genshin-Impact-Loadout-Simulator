@@ -101,3 +101,21 @@ footer > section {
 .footer-right > p > a:hover {
     text-decoration: underline;
 }
+
+main.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error > h1 {
+    margin: 30px;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--onyx);
+}
+
+.error > img {
+    width: 150px;
+}
