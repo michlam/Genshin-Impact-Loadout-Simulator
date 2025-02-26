@@ -23,6 +23,8 @@ main.characters {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    padding: 40px;
 }
 
 .character-list {
@@ -34,8 +36,12 @@ main.characters {
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     gap: 10px 20px;
+}
+
+.character-list::after {
+    content: "";
 }
 
 .char-list-item {
