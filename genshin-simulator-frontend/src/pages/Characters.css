@@ -29,15 +29,15 @@ main.characters {
 
 .character-list {
     background-color: var(--light-ivory);
-    width: 65dvw;
-    padding: 40px 40px 30px;
+    width: 45dvw;
+    padding: 40px 40px 40px;
     border-radius: 8px;
     box-shadow: 0px 8px 50px 3px rgba(153, 153, 153, 0.034);
 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px 20px;
+    gap: 15px 15px;
 }
 
 .character-list::after {
@@ -45,9 +45,14 @@ main.characters {
 }
 
 .char-list-item {
+    border: 3px solid transparent;
     height: 100px;
     border-radius: 8px;
     overflow: hidden;
+}
+
+.char-list-item:hover {
+    border-color: var(--onyx);
 }
 
 .char-img-container {
@@ -55,6 +60,7 @@ main.characters {
     padding: 0;
     position: relative;
     display: inline-block;
+    cursor: pointer;
 }
 
 .four-star {
