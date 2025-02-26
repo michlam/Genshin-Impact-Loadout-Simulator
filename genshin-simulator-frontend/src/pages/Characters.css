@@ -45,6 +45,7 @@ main.characters {
 }
 
 .char-list-item {
+    height: 100px;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -52,6 +53,8 @@ main.characters {
 .char-img-container {
     height: 100px;
     padding: 0;
+    position: relative;
+    display: inline-block;
 }
 
 .four-star {
@@ -69,5 +72,16 @@ main.characters {
     width: 100px;
 }
 
+.char-img-container > p {
+    margin: 0;
+    font-size: 0.7rem;
+    position: absolute;
+    top: 77%;
+    left: 0%;
+
+    background-color: rgba(0, 0, 0, 0.719);
+    color: white;
+    padding: 5% 80% 5% 7%;
+}
 
 
