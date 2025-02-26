@@ -4,6 +4,7 @@ import { getUserIdHelper, requireAuth } from "../utils";
 import { useLoaderData, Await } from "react-router-dom";
 import CharListItem from "../components/CharListItem.jsx";
 import "./Characters.css"
+import { useState } from "react";
 
 export async function loader({ request }) {
     await requireAuth(request);
@@ -19,9 +20,10 @@ export async function loader({ request }) {
     }
 }
 
-function renderBaseCharacters(chars) {
+function renderBaseCharacters(chars, setCharFocus) {
     const baseCharElements = chars.map((char) => (
-        <CharListItem key={char.name} name={char.name} star={char.star} /> 
+        <CharListItem key={char.name} name={char.name} star={char.star} 
+                    setCharFocus={setCharFocus}/> 
     ))
 
     return baseCharElements;
@@ -29,11 +31,16 @@ function renderBaseCharacters(chars) {
 
 export default function Characters() {
     const {baseCharacters, userCharacters} = useLoaderData();
+    const [charFocus, setCharFocus] = useState(null);
 
     return (
         <main className="characters">
             <div className="character-list">
-                {renderBaseCharacters(baseCharacters)}
+                {renderBaseCharacters(baseCharacters, setCharFocus)}
+            </div>
+
+            <div className="character-info">
+                {charFocus ? <h1>{charFocus} is focused</h1> : null}
             </div>
         </main>
     )

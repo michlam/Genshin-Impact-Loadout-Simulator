@@ -7,7 +7,7 @@ export default function CharListItem(props) {
     name = name[name.length - 1];
 
     return (
-        <div className="char-list-item">
+        <div className="char-list-item" onClick={() => props.setCharFocus(props.name)}>
             <div className={`char-img-container ${bgClass}`}>
                 <img src={imagePath} />
                 <p>{name}</p>
