@@ -33,7 +33,6 @@ function renderBaseCharacters(chars, setCharFocus) {
 export default function Characters() {
     const {baseCharacters, userCharacters} = useLoaderData();
     const [charFocus, setCharFocus] = useState(null);
-    console.log(userCharacters);
 
     return (
         <main className="characters">

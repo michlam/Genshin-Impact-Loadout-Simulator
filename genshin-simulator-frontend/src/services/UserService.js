@@ -18,3 +18,14 @@ export const getUserCharactersById = (userId) => {
 
     return axios.post(REST_API_BASE_URL + "/characters", body);
 }
+
+export const unlockUserCharacter = (userId, charName) => {
+    const body = {
+        "id": userId,
+        "name": charName
+    }
+
+    console.log(body);
+    return axios.post(REST_API_BASE_URL + "/characters/unlock", body);
+    // return "hello hello";
+}

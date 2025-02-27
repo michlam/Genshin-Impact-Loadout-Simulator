@@ -1,29 +1,43 @@
+import { useState } from "react";
+import { unlockUserCharacter } from "../services/UserService";
+import { getUserIdHelper } from "../utils";
 import "./CharInfo.css";
+import { useNavigate } from "react-router-dom";
+
 
 export default function CharInfo(props) {
     const char = getCharacterInfo(props.charFocus, props.baseCharacters);
-    const imagePath = "../../characters/splasharts/" + 
-        char.name.split(" ").join("_") + 
-        "_Wish.webp";
+    const navigate = useNavigate();
+    const [isUnlocked, setIsUnlocked] = useState(props.userCharacters.includes(char.name));
+
+    async function handleUnlock() {
+        try {
+            const data = await unlockUserCharacter(getUserIdHelper(), char.name);
+            console.log(data);
+
+            setIsUnlocked(true);
+            // navigate(0);
+        } catch (err) {
+            console.log(err.message);
+            return err.message;
+        }
+    }
+
+    const unlockButtonElement = isUnlocked ?
+        (<button className="unlocked">
+            Character Already Unlocked
+        </button>) :
+        (<button onClick={handleUnlock}>
+            Unlock Character
+        </button>)
+
 
     let starsElement = "";
     for (let i = 0; i < char.star; i++) {
         starsElement += "⭐";
     }
 
-    let unlockButton;
-    if (props.userCharacters.includes(char.name)) {
-        unlockButton = 
-            <button className="locked">
-                Unlock Character
-            </button> 
-    } else {
-        unlockButton = 
-            <button className="unlocked">
-                Character Already Unlocked
-            </button>
-    }
-    
+    const imagePath = "../../characters/splasharts/" + char.name.split(" ").join("_") + "_Wish.webp";
 
     return (
         <div className="char-info-border">
@@ -46,7 +60,7 @@ export default function CharInfo(props) {
                 </div>
                 <img src={imagePath} alt={`${char.name} splashart`}/>
                 
-                {unlockButton}
+                {unlockButtonElement}
             </div>
         </div>
     )
