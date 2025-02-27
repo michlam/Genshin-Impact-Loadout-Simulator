@@ -13,16 +13,15 @@ export default function CharInfo(props) {
         try {
             const data = await unlockUserCharacter(getUserIdHelper(), props.char.name);
 
-            // Do a refresh to ensure that the 
+            // Refresh page sync unlock button state
             navigate(0);
         } catch (err) {
             console.log(err.message);
-            return err.message;
         }
     }
 
     const unlockButtonElement = props.isUnlocked ?
-        (<button className="unlocked">
+        (<button className="unlocked" disabled>
             Character Already Unlocked
         </button>) :
         (<button onClick={handleUnlock}>

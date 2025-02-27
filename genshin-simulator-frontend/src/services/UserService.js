@@ -25,6 +25,5 @@ export const unlockUserCharacter = (userId, charName) => {
         "name": charName
     }
 
-    // return axios.post(REST_API_BASE_URL + "/characters/unlock", body);
-    return "hello hello";
+    return axios.post(REST_API_BASE_URL + "/characters/unlock", body);
 }

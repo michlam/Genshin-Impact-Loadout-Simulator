@@ -54,6 +54,39 @@
     font-weight: 50;
 }
 
+.char-info-container > button {
+    background-image: linear-gradient(to right, #FF512F 0%, #c2b116  51%, #FF512F  100%); 
+    background-size: 200% auto;
+    border: 1px solid transparent;
+
+    padding: 15px 35px;
+    margin-top: 30px;
+
+    border-radius: 5px;
+    border: none;
+
+    font-family: "Genshin";
+    font-size: 1rem;
+    color: white;   
+    cursor: pointer;
+}
+
+.char-info-container > button:hover {
+    background-image: linear-gradient(to right, #bd3d23 0%, #968811  51%, #bd3a20  100%); 
+}
+
+.char-info-container > button.unlocked {
+    background-image: none;
+    border: 1px solid var(--cinnabar);
+    color: var(--cinnabar);
+    cursor: default;
+}
+
+
+
+
+
+
 .char-info-details {
     width: 101%;
     margin: -1px;
