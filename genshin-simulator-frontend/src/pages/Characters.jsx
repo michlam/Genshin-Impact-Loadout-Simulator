@@ -33,6 +33,11 @@ function renderBaseCharacters(chars, setCharFocus) {
 export default function Characters() {
     const {baseCharacters, userCharacters} = useLoaderData();
     const [charFocus, setCharFocus] = useState(null);
+  
+    const char = getCharacterInfo(charFocus, baseCharacters);
+    let isUnlocked = false;
+    if (char) isUnlocked = userCharacters.includes(char.name);
+
 
     return (
         <main className="characters">
@@ -40,7 +45,22 @@ export default function Characters() {
                 {renderBaseCharacters(baseCharacters, setCharFocus)}
             </div>
 
-            {charFocus ? <CharInfo charFocus={charFocus} baseCharacters={baseCharacters} userCharacters={userCharacters}/> : null}
+            {charFocus ? <CharInfo char={char} isUnlocked={isUnlocked} /> : null}
         </main>
     )
+}
+
+
+
+
+/**
+ * Helper function to retrieve the information for the given charName. 
+ * Return an object with name, title, star, element, and weapon_type
+ */
+function getCharacterInfo(charName, baseCharacters) {
+    for (let i = 0; i < baseCharacters.length; i++) {
+        if (baseCharacters[i].name === charName) return baseCharacters[i];
+    }
+
+    return null;
 }
