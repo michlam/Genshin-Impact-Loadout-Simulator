@@ -41,9 +41,10 @@ export default function Characters() {
 
     return (
         <main className="characters">
-            <div className="character-list">
+            <fieldset className="character-list">
+                <legend>Characters</legend>
                 {renderBaseCharacters(baseCharacters, setCharFocus)}
-            </div>
+            </fieldset>
 
             {charFocus ? <CharInfo char={char} isUnlocked={isUnlocked} /> : null}
         </main>

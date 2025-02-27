@@ -55,7 +55,7 @@ export default function CharInfo(props) {
                         <p>{char.weapon_type}</p>
                     </section>
                 </div>
-                <img src={imagePath} alt={`${char.name} splashart`}/>
+                <img src={imagePath} alt={`${char.name} splashart`} loading="lazy"/>
                 
                 {unlockButtonElement}
             </div>
