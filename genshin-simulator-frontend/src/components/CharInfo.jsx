@@ -2,15 +2,18 @@ import "./CharInfo.css";
 
 export default function CharInfo(props) {
     const char = getCharacterInfo(props.charFocus, props.baseCharacters);
-    const imagePath = "../../public/characters/splasharts/" + 
+    const imagePath = "../../characters/splasharts/" + 
         char.name.split(" ").join("_") + 
         "_Wish.webp";
     
 
     return (
-        <div className="char-info-container">
-            <img src={imagePath} />
-            <p>{char.name}</p>
+        <div className="char-info-border">
+            <div className="char-info-container">
+                <h2>{char.name}</h2>
+                <h4>{char.title}</h4>
+                <img src={imagePath} alt={`${char.name} splashart`}/>
+            </div>
         </div>
     )
 }
