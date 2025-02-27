@@ -18,7 +18,7 @@ export default function Footer() {
                     <p><a href="https://github.com/michlam" target="_blank">GitHub</a></p>
                 </div>
 
-                <button onClick={() => localStorage.clear()}>CLEAR LOCAL STORAGE</button>
+                <button onClick={() => localStorage.clear()}>Clear user for logout</button>
             </section>
         </footer>
     )
