@@ -5,6 +5,7 @@ import { useLoaderData, Await } from "react-router-dom";
 import CharListItem from "../components/CharListItem.jsx";
 import "./Characters.css"
 import { useState } from "react";
+import CharInfo from "../components/CharInfo";
 
 export async function loader({ request }) {
     await requireAuth(request);
@@ -39,9 +40,7 @@ export default function Characters() {
                 {renderBaseCharacters(baseCharacters, setCharFocus)}
             </div>
 
-            <div className="character-info">
-                {charFocus ? <h1>{charFocus} is focused</h1> : null}
-            </div>
+            {charFocus ? <CharInfo charFocus={charFocus} baseCharacters={baseCharacters}/> : null}
         </main>
     )
 }
