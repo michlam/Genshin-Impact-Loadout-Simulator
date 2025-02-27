@@ -24,7 +24,7 @@ export async function loader({ request }) {
 function renderBaseCharacters(chars, setCharFocus) {
     const baseCharElements = chars.map((char) => (
         <CharListItem key={char.name} name={char.name} star={char.star} 
-                    setCharFocus={setCharFocus}/> 
+                      setCharFocus={setCharFocus}/> 
     ))
 
     return baseCharElements;
@@ -33,6 +33,7 @@ function renderBaseCharacters(chars, setCharFocus) {
 export default function Characters() {
     const {baseCharacters, userCharacters} = useLoaderData();
     const [charFocus, setCharFocus] = useState(null);
+    console.log(userCharacters);
 
     return (
         <main className="characters">
@@ -40,7 +41,7 @@ export default function Characters() {
                 {renderBaseCharacters(baseCharacters, setCharFocus)}
             </div>
 
-            {charFocus ? <CharInfo charFocus={charFocus} baseCharacters={baseCharacters}/> : null}
+            {charFocus ? <CharInfo charFocus={charFocus} baseCharacters={baseCharacters} userCharacters={userCharacters}/> : null}
         </main>
     )
 }

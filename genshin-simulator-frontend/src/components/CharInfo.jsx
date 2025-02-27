@@ -10,6 +10,19 @@ export default function CharInfo(props) {
     for (let i = 0; i < char.star; i++) {
         starsElement += "⭐";
     }
+
+    let unlockButton;
+    if (props.userCharacters.includes(char.name)) {
+        unlockButton = 
+            <button className="locked">
+                Unlock Character
+            </button> 
+    } else {
+        unlockButton = 
+            <button className="unlocked">
+                Character Already Unlocked
+            </button>
+    }
     
 
     return (
@@ -32,6 +45,8 @@ export default function CharInfo(props) {
                     </section>
                 </div>
                 <img src={imagePath} alt={`${char.name} splashart`}/>
+                
+                {unlockButton}
             </div>
         </div>
     )
