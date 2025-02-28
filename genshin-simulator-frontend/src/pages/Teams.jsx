@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { getUserTeamsById } from "../services/UserService";
 import { getUserIdHelper, requireAuth } from "../utils";
+import "./Teams.css";
 
 export async function loader({ request }) {
     await requireAuth(request);
@@ -17,11 +18,23 @@ export async function loader({ request }) {
 
 export default function Teams() {
     const { userTeams } = useLoaderData();
-    console.log(userTeams);
+    // console.log(userTeams);
 
     return (
-        <main>
-            <h1>This is the teams page</h1>
+        <main className="teams">
+            <fieldset className="teams-list">
+                <legend>Teams</legend>
+                {/* {renderTeams(userTeams)} */}
+            </fieldset>
         </main>
     )
 }
+
+{/* <main className="characters">
+<fieldset className="character-list">
+    <legend>Characters</legend>
+    {renderBaseCharacters(baseCharacters, setCharFocus)}
+</fieldset>
+
+{charFocus ? <CharInfo char={char} isUnlocked={isUnlocked} /> : null}
+</main> */}
