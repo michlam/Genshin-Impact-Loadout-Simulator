@@ -112,4 +112,12 @@ public class UserServiceImpl implements UserService {
         return user.getId();
     }
 
+    @Override
+    public List<UserTeam> getUserTeamsById(Long userId) {
+        userRepository.findById(userId).orElseThrow(() ->
+                new ResourceNotFoundException("User does not exist with the given id: " + userId));
+
+        return userTeamRepository.findTeamsById(userId);
+    }
+
 }

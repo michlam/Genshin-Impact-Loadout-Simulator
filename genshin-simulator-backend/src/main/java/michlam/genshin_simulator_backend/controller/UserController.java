@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import michlam.genshin_simulator_backend.dto.UserCharacterDto;
 import michlam.genshin_simulator_backend.dto.UserDto;
 import michlam.genshin_simulator_backend.entity.User;
+import michlam.genshin_simulator_backend.entity.UserTeam;
 import michlam.genshin_simulator_backend.exception.DuplicateResourceException;
 import michlam.genshin_simulator_backend.exception.ErrorResponse;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
@@ -21,6 +22,7 @@ import java.util.Map;
 @RequestMapping("/api/users") // Used to denote the base URL for any user-based apis.
 public class UserController {
     private UserService userService;
+
 
     // Build Add User REST API
     @PostMapping // Maps post to this method
@@ -80,13 +82,27 @@ public class UserController {
     }
 
     // Build Get User Characters By ID REST API
-    @PostMapping("/characters") // Maps get to this method
+    @PostMapping("/characters") // Maps post to this method
     public ResponseEntity<Object> getUserCharactersById(@RequestBody Map<String, String> json) {
         Long userId = Long.parseLong(json.get("id"));
 
         try {
             List<String> userCharacterDtos = userService.getUserCharactersById(userId);
             return ResponseEntity.ok(userCharacterDtos);
+        } catch (ResourceNotFoundException e) {
+            ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+    }
+
+    // Build Get User Teams By ID REST API
+    @PostMapping("/teams")
+    public ResponseEntity<Object> getUserTeamsById(@RequestBody Map<String, String> json) {
+        Long userId = Long.parseLong(json.get("id"));
+
+        try {
+            List<UserTeam> userTeams = userService.getUserTeamsById(userId);
+            return ResponseEntity.ok(userTeams);
         } catch (ResourceNotFoundException e) {
             ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
