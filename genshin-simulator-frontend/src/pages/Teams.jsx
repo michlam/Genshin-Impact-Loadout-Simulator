@@ -1,7 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 import { getUserTeamsById } from "../services/UserService";
 import { getUserIdHelper, requireAuth } from "../utils";
 import "./Teams.css";
+import { useState } from "react";
 
 export async function loader({ request }) {
     await requireAuth(request);
@@ -36,12 +37,18 @@ function renderTeam(teamNum, char1, char2, char3, char4) {
                 <summary>{`Team ${teamNum}`}</summary>
                 <div className="team-content">
                     <div className="char-container">
-                        
+                        {char1 ? <img src={getImagePath(char1)} /> : <p>No character selected</p>}
                     </div>
-                    <p>{`Character 1: ${char1}`}</p>
-                    <p>{`Character 2: ${char2}`}</p>
-                    <p>{`Character 3: ${char3}`}</p>
-                    <p>{`Character 4: ${char4}`}</p>
+                    <div className="char-container">
+                        {char2 ? <img src={getImagePath(char2)} /> : <p>No character selected</p>}
+                    </div>
+                    <div className="char-container">
+                        {char3 ? <img src={getImagePath(char3)} /> : <p>No character selected</p>}
+                    </div>
+                    <div className="char-container">
+                        {char4 ? <img src={getImagePath(char4)} /> : <p>No character selected</p>}
+                    </div>
+ 
                 </div>
             </details>
         </>
@@ -51,7 +58,8 @@ function renderTeam(teamNum, char1, char2, char3, char4) {
 }
 
 export default function Teams() {
-    const { userTeams } = useLoaderData();
+    const userTeamsData = useLoaderData().userTeams;
+    const [userTeams, setUserTeams] = useState(userTeamsData);
 
     return (
         <main className="teams">
@@ -61,6 +69,10 @@ export default function Teams() {
             </fieldset>
         </main>
     )
+}
+
+function getImagePath(char) {
+    return "../../characters/splasharts/" + char.split(" ").join("_") + "_Wish.webp";
 }
 
 {/* <main className="characters">
