@@ -18,6 +18,8 @@ export function loginHelper(userId, username) {
     localStorage.setItem("loggedin", true);
     localStorage.setItem("userId", userId);
     localStorage.setItem("username", username);
+
+    console.log(localStorage);
 }
 
 export function logoutHelper() {

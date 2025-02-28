@@ -30,7 +30,7 @@ public class LoginController {
         try {
             if (loginService.login(username, password)) {
                 // In the future, create a JWT for user sessions.
-                String response = "User ID: " + userService.getIdByUsername(username) + " Login successful";
+                String response = userService.getIdByUsername(username) + " Login successful";
                 return new ResponseEntity<>(response, HttpStatus.OK);
             } else {
                 String response = "Invalid credentials";

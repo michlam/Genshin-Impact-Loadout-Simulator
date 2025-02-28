@@ -8,7 +8,8 @@ export async function loader({ request }) {
     const userId = getUserIdHelper();
     
     // We want a list of all teams. Later, we might want base characters and user characters as well.
-    const userTeams = await getUserTeamsById(userId);
+    console.log(userId);
+    // const userTeams = await getUserTeamsById(userId);
 
     return {
         "userTeams": userTeams.data,

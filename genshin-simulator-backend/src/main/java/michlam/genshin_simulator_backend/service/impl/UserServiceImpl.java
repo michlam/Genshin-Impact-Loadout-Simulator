@@ -127,25 +127,17 @@ public class UserServiceImpl implements UserService {
         Long userId = userTeamKey.getUser_id();
         Integer teamNum = userTeamKey.getTeam_num();
 
-        UserTeam userTeam = userTeamRepository.findTeamByIdAndNum(userId, teamNum);
-        System.out.println(userTeam);
+        try {
+            UserTeam userTeam = userTeamRepository.findTeamByIdAndNum(userId, teamNum);
+            userTeam.setCharacter_name_1(userTeamDto.getCharacter_name_1());
+            userTeam.setCharacter_name_2(userTeamDto.getCharacter_name_2());
+            userTeam.setCharacter_name_3(userTeamDto.getCharacter_name_3());
+            userTeam.setCharacter_name_4(userTeamDto.getCharacter_name_4());
 
-        return null;
+            UserTeam updatedUserTeamObj = userTeamRepository.save(userTeam);
+            return Mapper.mapToUserTeamDto(updatedUserTeamObj);
+        } catch (Exception e) {
+            throw new ResourceNotFoundException("There was an error finding this team.");
+        }
     }
-//    User user = userRepository.findById(updatedUser.getId()).orElseThrow(() ->
-//            new ResourceNotFoundException("User does not exist with the given id: " + updatedUser.getId()));
-//
-//    // Check that we aren't changing the username to something that is taken.
-//        userRepository.findByUsername(updatedUser.getUsername()).ifPresent(checkUser -> {
-//        if (!checkUser.getId().equals(updatedUser.getId())) {
-//            throw new DuplicateResourceException("User with this username is already taken.");
-//        }
-//    });
-//
-//        user.setUsername(updatedUser.getUsername());
-//        user.setPassword(updatedUser.getPassword()); // In the future, probably don't want to it this way.
-//
-//    User updatedUserObj = userRepository.save(user);
-//        return Mapper.mapToUserDto(updatedUserObj);
-
 }

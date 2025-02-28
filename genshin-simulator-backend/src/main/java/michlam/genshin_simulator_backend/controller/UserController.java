@@ -115,29 +115,10 @@ public class UserController {
     public ResponseEntity<Object> updateUserTeam(@RequestBody UserTeamDto updatedUserTeam) {
         try {
             UserTeamDto userTeamDto = userService.updateUserTeam(updatedUserTeam);
-
-            // Return the new user teams.
-//            List<UserTeam> userTeams = userService.getUserTeamsById(userId);
-//            return ResponseEntity.ok(userTeams);
-            return ResponseEntity.ok("Hello this worked ok");
+            return ResponseEntity.ok(userTeamDto);
         } catch (ResourceNotFoundException e) {
             ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
     }
-
-//    // Build Update User REST API
-//    @PutMapping // Maps put to this method
-//    public ResponseEntity<Object> updateUser(@RequestBody UserDto updatedUser) {
-//        try {
-//            UserDto userDto = userService.updateUser(updatedUser);
-//            return ResponseEntity.ok(userDto);
-//        } catch (ResourceNotFoundException e) {
-//            ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-//        } catch (DuplicateResourceException e) {
-//            ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage());
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
-//        }
-//    }
 }
