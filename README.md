@@ -16,3 +16,13 @@ For the first phase, I plan to start small and only implement the basic teams an
 - Java and Spring backend, with the required REST APIs
 - HTML, CSS, and JavaScript frontend that consumes the REST APIs
 
+<br/>
+<br/>
+
+# Attributions
+### Art
+- All Genshin Import artwork from HoYoverse
+### Icons
+- <a target="_blank" href="https://coolshap.es/">Star</a> icon by CoolShap.es
+- <a target="_blank" href="https://icons8.com/icon/37218/sort-down">Sort Down</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+- <a target="_blank" href="https://icons8.com/icon/37221/sort-up">Sort Up</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
