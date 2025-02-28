@@ -2,6 +2,7 @@ package michlam.genshin_simulator_backend.service;
 
 import michlam.genshin_simulator_backend.dto.UserCharacterDto;
 import michlam.genshin_simulator_backend.dto.UserDto;
+import michlam.genshin_simulator_backend.dto.UserTeamDto;
 import michlam.genshin_simulator_backend.entity.UserTeam;
 
 import java.util.List;
@@ -17,4 +18,5 @@ public interface UserService{
     Long getIdByUsername(String username);
 
     List<UserTeam> getUserTeamsById(Long userId);
+    UserTeamDto updateUserTeam(UserTeamDto userTeamDto);
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import michlam.genshin_simulator_backend.dto.BaseCharacterDto;
 import michlam.genshin_simulator_backend.dto.UserCharacterDto;
 import michlam.genshin_simulator_backend.dto.UserDto;
+import michlam.genshin_simulator_backend.dto.UserTeamDto;
 import michlam.genshin_simulator_backend.entity.BaseCharacter;
 import michlam.genshin_simulator_backend.entity.User;
 import michlam.genshin_simulator_backend.entity.UserCharacter;
@@ -119,5 +120,32 @@ public class UserServiceImpl implements UserService {
 
         return userTeamRepository.findTeamsById(userId);
     }
+
+    @Override
+    public UserTeamDto updateUserTeam(UserTeamDto userTeamDto) {
+        UserTeamKey userTeamKey = userTeamDto.getUserTeamKey();
+        Long userId = userTeamKey.getUser_id();
+        Integer teamNum = userTeamKey.getTeam_num();
+
+        UserTeam userTeam = userTeamRepository.findTeamByIdAndNum(userId, teamNum);
+        System.out.println(userTeam);
+
+        return null;
+    }
+//    User user = userRepository.findById(updatedUser.getId()).orElseThrow(() ->
+//            new ResourceNotFoundException("User does not exist with the given id: " + updatedUser.getId()));
+//
+//    // Check that we aren't changing the username to something that is taken.
+//        userRepository.findByUsername(updatedUser.getUsername()).ifPresent(checkUser -> {
+//        if (!checkUser.getId().equals(updatedUser.getId())) {
+//            throw new DuplicateResourceException("User with this username is already taken.");
+//        }
+//    });
+//
+//        user.setUsername(updatedUser.getUsername());
+//        user.setPassword(updatedUser.getPassword()); // In the future, probably don't want to it this way.
+//
+//    User updatedUserObj = userRepository.save(user);
+//        return Mapper.mapToUserDto(updatedUserObj);
 
 }
