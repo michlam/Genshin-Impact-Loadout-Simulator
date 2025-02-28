@@ -52,8 +52,6 @@ export default function Characters() {
 }
 
 
-
-
 /**
  * Helper function to retrieve the information for the given charName. 
  * Return an object with name, title, star, element, and weapon_type
