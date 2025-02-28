@@ -31,15 +31,18 @@ function renderTeams(userTeams) {
 
 function renderTeam(teamNum, char1, char2, char3, char4) {
     const userTeamElement = (
-        <details className="team" key={teamNum} name="team">
-            <summary>{`Team ${teamNum}`}</summary>
-            <div className="team-content">
-                <p>{`Character 1: ${char1}`}</p>
-                <p>{`Character 2: ${char2}`}</p>
-                <p>{`Character 3: ${char3}`}</p>
-                <p>{`Character 4: ${char4}`}</p>
-            </div>
-        </details>
+        <>
+            <details className="team" key={teamNum} name="team">
+                <summary>{`Team ${teamNum}`}</summary>
+                <div className="team-content">
+                    <p>{`Character 1: ${char1}`}</p>
+                    <p>{`Character 2: ${char2}`}</p>
+                    <p>{`Character 3: ${char3}`}</p>
+                    <p>{`Character 4: ${char4}`}</p>
+                </div>
+            </details>
+            {teamNum !== 8 ? <hr className="team-divider"/> : null}
+        </>
     )
 
     return userTeamElement;

@@ -40,7 +40,6 @@ main.teams {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px 15px;
 }
 
 .teams-list > legend {
@@ -51,5 +50,37 @@ main.teams {
 }
 
 details.team {
+    width: 80%;
+    margin: 0;
+    padding: 0;
+}
 
+details.team > summary {
+    margin: 0;
+    padding: 0;
+
+    font-size: 1.4rem;
+    cursor: pointer;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &::after {
+        content: url("../assets/icons/caret-down.png");
+        transform: scale(0.4);
+        transform-origin: center;
+        text-align: right;
+    }
+    
+    [open] &::after {
+    content: url("../assets/icons/caret-up.png");
+
+    }
+}
+
+hr.team-divider {
+    width: 100%;
+    margin: 0;
+    border: 1px solid #60614d34;
 }
