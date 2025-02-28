@@ -27,3 +27,11 @@ export const unlockUserCharacter = (userId, charName) => {
 
     return axios.post(REST_API_BASE_URL + "/characters/unlock", body);
 }
+
+export const getUserTeamsById = (userId) => {
+    const body = {
+        "id": userId
+    }
+
+    return axios.post(REST_API_BASE_URL + "/teams", body);
+}
