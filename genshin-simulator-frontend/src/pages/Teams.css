@@ -13,6 +13,8 @@
     --ivory: #eaecc6;
     --cinnabar: #e94f37;
     --onyx: #393e41;
+    --light-onyx: #58646b;
+    --dark-onyx: #24292c;
     --steel-blue: #3f88c5;
     --keppel: #44bba4;
 
@@ -40,6 +42,7 @@ main.teams {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 14px;
 }
 
 .teams-list > legend {
@@ -50,9 +53,13 @@ main.teams {
 }
 
 details.team {
-    width: 80%;
+    width: 85%;
     margin: 0;
-    padding: 0;
+    padding: 0px 40px;
+    border-radius: 3px;
+
+    background-color: white;
+    box-shadow: 0px 0px 5px 1px rgba(105, 105, 105, 0.158);
 }
 
 details.team > summary {
@@ -61,7 +68,7 @@ details.team > summary {
     cursor: pointer;
 
     height: 100px;
-    color: var(--onyx);
+    color: var(--dark-onyx);
   
     display: flex;
     justify-content: space-between;
@@ -72,6 +79,8 @@ details.team > summary {
         transform: scale(0.35);
         transform-origin: center;
         text-align: right;
+
+        
     }
     
     [open] &::after {
@@ -87,7 +96,8 @@ details.team > summary {
     margin: -20px 0px 20px;
     padding: 0;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 hr.team-divider {
