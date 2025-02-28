@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
+    const navigate = useNavigate();
+
     return (
         <footer>
             <section>
@@ -18,7 +21,12 @@ export default function Footer() {
                     <p><a href="https://github.com/michlam" target="_blank">GitHub</a></p>
                 </div>
 
-                <button onClick={() => localStorage.clear()}>Clear user for logout</button>
+                <button onClick={() => {
+                    localStorage.clear();
+                    navigate(0);
+                }}>
+                    Clear user for logout
+                </button>
             </section>
         </footer>
     )
