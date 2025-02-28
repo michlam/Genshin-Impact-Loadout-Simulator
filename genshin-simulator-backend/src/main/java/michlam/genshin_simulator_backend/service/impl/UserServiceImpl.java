@@ -7,13 +7,16 @@ import michlam.genshin_simulator_backend.dto.UserDto;
 import michlam.genshin_simulator_backend.entity.BaseCharacter;
 import michlam.genshin_simulator_backend.entity.User;
 import michlam.genshin_simulator_backend.entity.UserCharacter;
+import michlam.genshin_simulator_backend.entity.UserTeam;
 import michlam.genshin_simulator_backend.entity.keys.UserCharacterKey;
+import michlam.genshin_simulator_backend.entity.keys.UserTeamKey;
 import michlam.genshin_simulator_backend.exception.DuplicateResourceException;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import michlam.genshin_simulator_backend.mapper.Mapper;
 import michlam.genshin_simulator_backend.repository.BaseCharacterRepository;
 import michlam.genshin_simulator_backend.repository.UserCharacterRepository;
 import michlam.genshin_simulator_backend.repository.UserRepository;
+import michlam.genshin_simulator_backend.repository.UserTeamRepository;
 import michlam.genshin_simulator_backend.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +30,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private BaseCharacterRepository baseCharacterRepository;
     private UserCharacterRepository userCharacterRepository;
+    private UserTeamRepository userTeamRepository;
 
     @Override
     public UserDto createUser(UserDto userDto) {
@@ -36,6 +40,14 @@ public class UserServiceImpl implements UserService {
         }
 
         User savedUser = userRepository.save(user);
+        // Initialize all user teams for this user
+        for (int i = 1; i <= 8; i++) {
+            UserTeamKey userTeamKey = new UserTeamKey(user.getId(), i);
+            UserTeam userTeam = new UserTeam(userTeamKey,
+                    null, null, null, null);
+            userTeamRepository.save(userTeam);
+        }
+
         return Mapper.mapToUserDto(savedUser);
     }
 
