@@ -37,7 +37,5 @@ export const getUserTeamsById = (userId) => {
 }
 
 export const updateUserTeam = (userTeam) => {
-    console.log(userTeam);
-
-    return null;
+    return axios.put(REST_API_BASE_URL + "/teams", userTeam);
 }
