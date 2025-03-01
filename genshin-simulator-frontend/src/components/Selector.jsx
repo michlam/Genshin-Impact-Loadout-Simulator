@@ -21,7 +21,7 @@ export default function Selector(props) {
             name = name[name.length - 1];
 
             return (
-                <div className={`selector-list-item ${bgClass} ${selectedClass}`} onClick={() => updateTeamHandler(teamNum, charNum, char.name, teamChars)}>
+                <div className={`selector-list-item ${bgClass} ${selectedClass}`} onClick={() => updateTeamHandler(teamNum, charNum, char.name)}>
                     <img src={imagePath}/>
                 </div>
             )
@@ -30,8 +30,11 @@ export default function Selector(props) {
         return charElements;
     }
 
-    function updateTeamHandler(teamNum, charNum, charName, teamChars) {
-        if (teamChars.includes(charName)) return;
+    function updateTeamHandler(teamNum, charNum, charName) {
+        const userTeam = props.userTeams[teamNum - 1];
+        const teamChars = [userTeam.character_name_1, userTeam.character_name_2, userTeam.character_name_3, userTeam.character_name_4];
+
+        if (charName !== null && teamChars.includes(charName)) return;
 
         // Structured clone is needed because JS copies objects by reference
         let newUserTeams = structuredClone(props.userTeams);
@@ -49,7 +52,7 @@ export default function Selector(props) {
         <fieldset className="selector-container">
             <legend>Team {props.focus.teamNum} - Character {props.focus.charNum}</legend>
  
-            <div className="selector-list-item-none">
+            <div className="selector-list-item-none" onClick={() => updateTeamHandler(props.focus.teamNum, props.focus.charNum, null)}>
                 None
             </div>
     
