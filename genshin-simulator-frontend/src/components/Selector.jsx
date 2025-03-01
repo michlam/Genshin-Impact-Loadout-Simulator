@@ -8,7 +8,7 @@ export default function Selector(props) {
         const userTeam = props.userTeams[teamNum - 1];
         const teamChars = [userTeam.character_name_1, userTeam.character_name_2, userTeam.character_name_3, userTeam.character_name_4];
 
-        const charElements = baseCharacters.map((char) => {
+        let charElements = baseCharacters.map((char) => {
             if (!userCharacters.includes(char.name)) return null;
             // We have all the base characters that the user actually owns now.
 
@@ -32,6 +32,11 @@ export default function Selector(props) {
     return (
         <fieldset className="selector-container">
             <legend>Character Select</legend>
+ 
+            <div className="selector-list-item-none">
+                None
+            </div>
+    
             {renderCharacters(props.focus.teamNum, props.focus.charNum)}
         </fieldset>
     )

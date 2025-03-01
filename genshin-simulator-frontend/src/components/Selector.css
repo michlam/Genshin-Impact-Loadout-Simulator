@@ -37,6 +37,7 @@
     box-shadow: 0px 8px 50px 3px rgba(153, 153, 153, 0.034);
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 15px 15px;
 }
 
@@ -63,4 +64,19 @@
 
 .selected {
     border: 3px solid var(--peach-gold);
+}
+
+.selector-list-item-none {
+    border: 3px solid var(--light-ivory);
+    border-radius: 6px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--onyx);
+    color: var(--light-ivory);
+    font-size: 0.8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
