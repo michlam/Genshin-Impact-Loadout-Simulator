@@ -36,16 +36,16 @@ function renderTeam(teamNum, char1, char2, char3, char4) {
             <details className="team" key={teamNum} name="team">
                 <summary>{`Team ${teamNum}`}</summary>
                 <div className="team-content">
-                    <div className="char-container">
+                    <div className="char-container char1">
                         {char1 ? <img src={getImagePath(char1)} /> : <p>No character selected</p>}
                     </div>
-                    <div className="char-container">
+                    <div className="char-container char2">
                         {char2 ? <img src={getImagePath(char2)} /> : <p>No character selected</p>}
                     </div>
-                    <div className="char-container">
+                    <div className="char-container char3">
                         {char3 ? <img src={getImagePath(char3)} /> : <p>No character selected</p>}
                     </div>
-                    <div className="char-container">
+                    <div className="char-container char4">
                         {char4 ? <img src={getImagePath(char4)} /> : <p>No character selected</p>}
                     </div>
  

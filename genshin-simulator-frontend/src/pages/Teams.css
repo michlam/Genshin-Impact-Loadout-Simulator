@@ -31,7 +31,7 @@ main.teams {
 
 .teams-list {
     background-color: var(--light-ivory);
-    min-width: 500px;
+    min-width: 700px;
     width: 45dvw;
     
     padding: 25px 40px 35px;
@@ -98,19 +98,49 @@ details.team > summary {
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .team-content > .char-container {
     height: 350px;
-
-    background-color: red;
-    border: 1px solid;
     overflow: hidden;
+    cursor: pointer;
+
+    border: 1px solid var(--light-onyx);
+    border-left: none;
+}
+
+.team-content > .char-container:hover {
+    box-shadow: inset 0px 0px 50px 3px var(--dark-onyx);
+}
+
+.team-content > .char1 {
+    background: rgb(68,99,164);
+    background: radial-gradient(at top right, rgba(68,99,164,1) 0%, rgba(103,33,153,1) 35%, rgba(27,61,47,1) 100%); 
+    border: 1px solid var(--light-onyx);
+}
+
+.team-content > .char2 {
+    background: rgb(136,153,33);
+    background: radial-gradient(at bottom right, rgba(136,153,33,1) 0%, rgba(162,164,68,1) 57%, rgba(226,231,40,1) 100%); 
+}
+
+.team-content > .char3 {
+
+    background: rgb(9,254,255);
+    background: radial-gradient(at bottom left, rgba(9,254,255,1) 0%, rgba(68,139,164,1) 57%, rgba(172,172,154,1) 100%); 
+}
+
+.team-content > .char4 {
+    background: rgb(9,255,161);
+    background: radial-gradient(at bottom right, rgba(9,255,161,1) 0%, rgba(68,164,140,1) 33%, rgba(95,95,79,1) 100%); 
 }
 
 .team-content > .char-container > img {
     width: 170%;
     height: 100%;
     object-fit: none;
-    object-position: 59% 45%;
+    object-position: 58% 45%;
 }
