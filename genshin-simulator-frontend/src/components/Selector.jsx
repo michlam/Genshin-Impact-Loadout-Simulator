@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { updateUserTeam } from "../services/UserService";
 import "./Selector.css";
 
 export default function Selector(props) {
@@ -30,11 +32,18 @@ export default function Selector(props) {
 
     function updateTeamHandler(teamNum, charNum, charName, teamChars) {
         if (teamChars.includes(charName)) return;
-        
-        let newUserTeams = props.userTeams;
+
+        // Structured clone is needed because JS copies objects by reference
+        let newUserTeams = structuredClone(props.userTeams);
         newUserTeams[teamNum - 1]["character_name_" + charNum] = charName;
-        console.log(newUserTeams); 
+        
+        // Update the userteams state and call api
+        props.setUserTeams(newUserTeams);
     }
+
+    useEffect(() => {
+        updateUserTeam(props.userTeams[props.focus.teamNum - 1]);
+    }, [props.userTeams]);
 
     return (
         <fieldset className="selector-container">

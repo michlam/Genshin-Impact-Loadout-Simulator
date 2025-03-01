@@ -82,6 +82,7 @@ export default function Teams() {
                 !focus ? null :
                 <Selector 
                     focus={focus} 
+                    setFocus={setFocus}
                     userTeams={userTeams}
                     setUserTeams={setUserTeams} 
                     baseCharacters={baseCharacters} 

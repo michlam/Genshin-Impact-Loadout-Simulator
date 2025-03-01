@@ -49,7 +49,7 @@
 }
 
 .selector-list-item {
-    border: 3px solid var(--light-ivory);
+    border: 4px solid var(--light-ivory);
     border-radius: 6px;
     height: 60px;
     overflow: hidden;
@@ -63,12 +63,12 @@
 }
 
 .selected {
-    border: 3px solid var(--peach-gold);
+    border: 4px solid var(--peach-gold);
     cursor: default;
 }
 
 .selector-list-item-none {
-    border: 3px solid var(--light-ivory);
+    border: 4px solid var(--light-ivory);
     border-radius: 6px;
     width: 60px;
     height: 60px;
