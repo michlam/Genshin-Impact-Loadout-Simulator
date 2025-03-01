@@ -19,7 +19,7 @@ export default function Selector(props) {
             name = name[name.length - 1];
 
             return (
-                <div className={`selector-list-item ${bgClass} ${selectedClass}`} onClick={() => updateTeamHandler(teamNum, charNum, char.name)}>
+                <div className={`selector-list-item ${bgClass} ${selectedClass}`} onClick={() => updateTeamHandler(teamNum, charNum, char.name, teamChars)}>
                     <img src={imagePath}/>
                 </div>
             )
@@ -28,7 +28,9 @@ export default function Selector(props) {
         return charElements;
     }
 
-    function updateTeamHandler(teamNum, charNum, charName) {
+    function updateTeamHandler(teamNum, charNum, charName, teamChars) {
+        if (teamChars.includes(charName)) return;
+        
         let newUserTeams = props.userTeams;
         newUserTeams[teamNum - 1]["character_name_" + charNum] = charName;
         console.log(newUserTeams); 
