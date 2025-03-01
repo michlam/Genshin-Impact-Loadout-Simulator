@@ -93,15 +93,24 @@ details.team > summary {
 }
 
 .team-content {
-    margin: -20px 0px 20px;
+    margin: -10px 0px 35px;
     padding: 0;
 
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
 
-hr.team-divider {
-    width: 100%;
-    margin: 0;
-    border: 1px solid #60614d34;
+.team-content > .char-container {
+    height: 350px;
+
+    background-color: red;
+    border: 1px solid;
+    overflow: hidden;
+}
+
+.team-content > .char-container > img {
+    width: 170%;
+    height: 100%;
+    object-fit: none;
+    object-position: 59% 45%;
 }
