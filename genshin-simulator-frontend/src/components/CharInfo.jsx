@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function CharInfo(props) {
+    const [charSelected, setCharSelected] = useState(null);
+
     const navigate = useNavigate();
     const char = props.char;
 
