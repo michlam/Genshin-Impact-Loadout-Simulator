@@ -10,7 +10,6 @@ export default function Selector(props) {
 
         let charElements = baseCharacters.map((char) => {
             if (!userCharacters.includes(char.name)) return null;
-            // We have all the base characters that the user actually owns now.
 
             const imagePath = "../../characters/avatars/ui-avataricon-" + char.name.toLowerCase() + ".png";
             const bgClass = char.star == 5 ? "five-star" : "four-star";
@@ -20,7 +19,7 @@ export default function Selector(props) {
             name = name[name.length - 1];
 
             return (
-                <div className={`selector-list-item ${bgClass} ${selectedClass}`}>
+                <div className={`selector-list-item ${bgClass} ${selectedClass}`} onClick={() => updateTeamHandler(teamNum, charNum, char.name)}>
                     <img src={imagePath}/>
                 </div>
             )
@@ -29,9 +28,15 @@ export default function Selector(props) {
         return charElements;
     }
 
+    function updateTeamHandler(teamNum, charNum, charName) {
+        let newUserTeams = props.userTeams;
+        newUserTeams[teamNum - 1]["character_name_" + charNum] = charName;
+        console.log(newUserTeams); 
+    }
+
     return (
         <fieldset className="selector-container">
-            <legend>Character Select</legend>
+            <legend>Team {props.focus.teamNum} - Character {props.focus.charNum}</legend>
  
             <div className="selector-list-item-none">
                 None
