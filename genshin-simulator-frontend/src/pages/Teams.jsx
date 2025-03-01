@@ -1,18 +1,22 @@
 import { useLoaderData, useSearchParams } from "react-router-dom";
-import { getUserTeamsById } from "../services/UserService";
+import { getUserCharactersById, getUserTeamsById } from "../services/UserService";
 import { getUserIdHelper, requireAuth } from "../utils";
 import "./Teams.css";
 import { useState } from "react";
 import Selector from "../components/Selector";
+import { getBaseCharacters } from "../services/BaseCharacterService";
 
 export async function loader({ request }) {
     await requireAuth(request);
     const userId = getUserIdHelper();
     
-    // We want a list of all teams. Later, we might want base characters and user characters as well.
+    const baseCharacters = await getBaseCharacters();
+    const userCharacters = await getUserCharactersById(userId);
     const userTeams = await getUserTeamsById(userId);
 
     return {
+        "baseCharacters": baseCharacters.data,
+        "userCharacters": userCharacters.data,
         "userTeams": userTeams.data,
     }
 }
@@ -60,6 +64,8 @@ function renderTeam(teamNum, char1, char2, char3, char4, setFocus) {
 }
 
 export default function Teams() {
+    const baseCharacters = useLoaderData().baseCharacters;
+    const userCharacters = useLoaderData().userCharacters;
     const userTeamsData = useLoaderData().userTeams;
     const [userTeams, setUserTeams] = useState(userTeamsData);
 
@@ -72,7 +78,16 @@ export default function Teams() {
                 {renderTeams(userTeams, setFocus)}
             </fieldset>
 
-            {focus ? <Selector focus={focus}/> : null}
+            {
+                !focus ? null :
+                <Selector 
+                    focus={focus} 
+                    userTeams={userTeams}
+                    setUserTeams={setUserTeams} 
+                    baseCharacters={baseCharacters} 
+                    userCharacters={userCharacters}
+                /> 
+            }
         </main>
     )
 }
