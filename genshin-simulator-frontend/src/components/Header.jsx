@@ -7,6 +7,18 @@ export default function Header() {
         fontWeight: "700",
     }
 
+    const loginElement = (
+        <NavLink to="login" style={({isActive}) => isActive ? activeStyles : null} className={"navlink"}>
+            Log In
+        </NavLink>
+    )
+
+    const logoutElement = (
+        <NavLink to="login" style={({isActive}) => isActive ? activeStyles : null} onClick={() => { localStorage.clear() }} className={"navlink"}>
+            Log Out
+        </NavLink>
+    )
+
     return (
         <header>
             <Link className="site-logo" to="/">GENSHIN LOADOUTS</Link>
@@ -19,9 +31,7 @@ export default function Header() {
                     Characters
                 </NavLink>
 
-                <NavLink to="login" style={({isActive}) => isActive ? activeStyles : null} className={"navlink"}>
-                    Log In
-                </NavLink>
+                {localStorage.getItem("loggedin") ? logoutElement : loginElement}
             </nav>
             
         </header>
