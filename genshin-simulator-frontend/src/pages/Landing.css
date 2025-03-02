@@ -40,8 +40,28 @@ main.landing {
 }
 
 .landing-content > h1 {
+    margin-bottom: 80px;
     font-size: 2.4rem;
     line-height: 170%;
 
     color: var(--light-ivory);
+}
+
+.landing-link {
+    background-color: var(--cinnabar);
+    padding: 13px 18px;
+
+    border-radius: 3px;
+    border: none;
+
+    font-family: "Genshin";
+    font-size: 1rem;
+    color: var(--light-ivory);
+    cursor: pointer;
+
+    text-decoration: none;
+}
+
+.landing-link:hover {
+    background-color: #b93521;
 }

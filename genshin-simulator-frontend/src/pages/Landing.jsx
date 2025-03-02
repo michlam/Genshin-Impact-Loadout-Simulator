@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Landing.css";
 
 export default function Landing() {
@@ -8,9 +9,9 @@ export default function Landing() {
                     Optimize your Genshin Impact team loadouts and builds.
                 </h1>
 
-                <button>
+                <Link to="/teams" className="landing-link">
                     Customize your teams
-                </button>
+                </Link>
             </div>
         </main>
     )
