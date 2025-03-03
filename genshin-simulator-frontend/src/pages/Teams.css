@@ -1,0 +1,146 @@
+@font-face {
+    font-family: "Genshin";
+    src: url('./assets/fonts/Genshin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#root {
+    font-size: 16px;
+    font-family: "Genshin";
+  
+    /* COLOURS */
+    --ivory: #eaecc6;
+    --cinnabar: #e94f37;
+    --onyx: #393e41;
+    --light-onyx: #58646b;
+    --dark-onyx: #24292c;
+    --steel-blue: #3f88c5;
+    --keppel: #44bba4;
+
+    --light-ivory: #f2fedc;
+}
+
+main.teams {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+}
+
+.teams-list {
+    background-color: var(--light-ivory);
+    min-width: 700px;
+    width: 45dvw;
+    
+    padding: 25px 40px 35px;
+    border-radius: 8px;
+    border: 3px solid var(--onyx);
+    box-shadow: 0px 8px 50px 3px rgba(153, 153, 153, 0.034);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.teams-list > legend {
+    font-size: 2.4rem;
+    padding: 0px 10px;
+    margin-left: 0.8em;
+    color: var(--onyx);
+}
+
+details.team {
+    width: 85%;
+    margin: 0;
+    padding: 0px 40px;
+    border-radius: 3px;
+
+    background-color: white;
+    box-shadow: 0px 0px 5px 1px rgba(105, 105, 105, 0.158);
+}
+
+details.team > summary {
+    font-weight: 400;
+    font-size: 1.4rem;
+    cursor: pointer;
+
+    height: 100px;
+    color: var(--dark-onyx);
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &::after {
+        content: url("../assets/icons/caret-down.png");
+        transform: scale(0.35);
+        transform-origin: center;
+        text-align: right;
+
+        
+    }
+    
+    [open] &::after {
+        content: url("../assets/icons/caret-up.png");
+    }
+
+    &:hover {
+        color: var(--steel-blue);
+    }
+}
+
+.team-content {
+    margin: -10px 0px 35px;
+    padding: 0;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.team-content > .char-container {
+    height: 350px;
+    overflow: hidden;
+    cursor: pointer;
+
+    border: 1px solid var(--light-onyx);
+    border-left: none;
+}
+
+.team-content > .char-container:hover {
+    box-shadow: inset 0px 0px 50px 3px var(--dark-onyx);
+}
+
+.team-content > .char1 {
+    background: rgb(68,99,164);
+    background: radial-gradient(at top right, rgba(68,99,164,1) 0%, rgba(103,33,153,1) 35%, rgba(27,61,47,1) 100%); 
+    border: 1px solid var(--light-onyx);
+}
+
+.team-content > .char2 {
+    background: rgb(136,153,33);
+    background: radial-gradient(at bottom right, rgba(136,153,33,1) 0%, rgba(162,164,68,1) 57%, rgba(226,231,40,1) 100%); 
+}
+
+.team-content > .char3 {
+
+    background: rgb(9,254,255);
+    background: radial-gradient(at bottom left, rgba(9,254,255,1) 0%, rgba(68,139,164,1) 57%, rgba(172,172,154,1) 100%); 
+}
+
+.team-content > .char4 {
+    background: rgb(9,255,161);
+    background: radial-gradient(at bottom right, rgba(9,255,161,1) 0%, rgba(68,164,140,1) 33%, rgba(95,95,79,1) 100%); 
+}
+
+.team-content > .char-container > img {
+    width: 170%;
+    height: 100%;
+    object-fit: none;
+    object-position: 58% 45%;
+}

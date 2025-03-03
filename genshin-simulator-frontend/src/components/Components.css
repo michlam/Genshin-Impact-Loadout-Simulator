@@ -1,0 +1,121 @@
+@font-face {
+    font-family: "Genshin";
+    src: url('./assets/fonts/Genshin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#root {
+    font-size: 16px;
+    font-family: "Genshin";
+  
+    /* COLOURS */
+    --ivory: #eaecc6;
+    --cinnabar: #e94f37;
+    --dark-cinnabar: #cf3d27;
+    --onyx: #393e41;
+    --steel-blue: #3f88c5;
+    --keppel: #44bba4;
+}
+
+header {
+    background-color: var(--cinnabar);
+    width: 100%;
+    height: 125px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0px 5px 20px 3px rgba(107, 107, 107, 0.452);
+}
+
+nav {
+    margin-right: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.navlink {
+    padding: 10px 30px;
+    border-radius: 5px;
+
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: var(--ivory);
+}
+
+.navlink:hover {
+    background-color: var(--dark-cinnabar);
+}
+
+.site-logo {
+    margin: 0px 0px 0px 5%;
+
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--ivory);
+    display: flex;
+    text-align: center;
+}
+
+footer {
+    background-color: var(--onyx);
+    width: 100%;
+}
+
+footer > section {
+    margin: 35px 70px 0px;
+    display: flex;
+    justify-content: space-evenly;
+    color: var(--steel-blue);
+}
+
+.footer-left > h1 {
+    margin-bottom: 235px;
+    font-size: 2.2rem;
+}
+
+.footer-left > p {
+    font-size: 0.9rem;
+}
+
+.footer-right {
+    margin-right: 40px;
+}
+
+.footer-right > h4 {
+    margin-bottom: 38px;
+}
+
+.footer-right > p {
+    margin: 10px 0px;
+}
+
+.footer-right > p > a {
+    text-decoration: none;
+    color: var(--steel-blue);
+}
+
+.footer-right > p > a:hover {
+    text-decoration: underline;
+}
+
+main.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error > h1 {
+    margin: 30px;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--onyx);
+}
+
+.error > img {
+    width: 150px;
+}
