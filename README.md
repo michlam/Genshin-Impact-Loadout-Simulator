@@ -20,12 +20,34 @@ This project aims to implement a simulator for Genshin Impact teams, characters,
 5. Postman
 
 ### Installation Steps
-1. Clone the repository:
+1. Clone the repository
    ```bash
    git clone https://github.com/michlam/Genshin-Impact-Loadout-Simulator.git
-2. In 
-3. 
+2. In MySQL Workbench, create a database named "genshin"
+   ```bash
+   create database genshin;
+3. Create the following folders and files in the code
+   ```bash
+   /genshin-simulator-backend/src/main/
+   /genshin-simulator-backend/src/main/application.properties
+4. In application.properties, add this configuration to connect with your daatabase
+   ```bash
+   spring.application.name=genshin-simulator-backend
+   spring.datasource.url=jdbc:mysql://*localhost:3306*/genshin
+   spring.datasource.username=*username*
+   spring.datasource.password=*password*
 
+   spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+   spring.jpa.hibernate.ddl-auto=update
+   ```
+   Replace *localhost:3306*, *username*, and *password* with your corresponding values.
+
+5. In IntelliJ IDEA, run the GenshinSimulatorBackendApplication.
+6. In Visual Studio Code, go to "/genshin-simulator-frontend/" and run the following
+   ```
+   npm run dev
+   ```
+   You may need to install *react*, *react-router-dom*, and *vite* if you don't have them.
 
 
 ### Phase 1
