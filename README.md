@@ -1,6 +1,8 @@
 # Genshin Impact Loadout Simulator
 A loadout simulator for Genshin Impact to help you try out and build new teams.
 
+![Demo Gif](./Demo/DemoGif.gif "Demo Gif")
+
 ## Project Description
 This project aims to implement a simulator for Genshin Impact teams, characters, and weapons, similar to what is seen in game. This project is also to help me practice my fullstack development and to help me learn Java, Spring, SQL, JavaScript, and React.
 
