@@ -51,8 +51,26 @@ This project aims to implement a simulator for Genshin Impact teams, characters,
    ```
    You may need to install *react*, *react-router-dom*, and *vite* if you don't have them.
 
+<br />
 
-### Phase 1
+# Development Logs
+
+### Features For Future Consideration
+- Team damage calculations
+- Character Stats
+- Artifacts
+- All characters and weapons until the most recent patch
+- Deployment
+- Accessibility
+
+### Phase 2 - Currently in progress
+For the second phase, I plan introduce key upgrades to security and responsiveness, while adding weapons to the web application core functionality. This requires an update to the database schema, backend API, and new frontend pages to be built. Finally, I hope to expand the character selection as well.
+- Users can add a weapon to their account
+- Users can assign weapons to characters
+- Users can login with web tokens stored with cookies
+- Users can responsively resize the web application
+
+### Phase 1 - Completed 3/3/25
 For the first phase, I plan to start small and only implement the basic teams and characters, with very minimal statistical information. The following list summarizes the phase 1 planned features:
 - Users can create, login to, and logout of their accounts
 - Users can add a character to their account
