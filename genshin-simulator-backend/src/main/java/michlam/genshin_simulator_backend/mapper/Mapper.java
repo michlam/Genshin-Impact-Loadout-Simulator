@@ -4,10 +4,7 @@ import michlam.genshin_simulator_backend.dto.BaseCharacterDto;
 import michlam.genshin_simulator_backend.dto.UserCharacterDto;
 import michlam.genshin_simulator_backend.dto.UserDto;
 import michlam.genshin_simulator_backend.dto.UserTeamDto;
-import michlam.genshin_simulator_backend.entity.BaseCharacter;
-import michlam.genshin_simulator_backend.entity.User;
-import michlam.genshin_simulator_backend.entity.UserCharacter;
-import michlam.genshin_simulator_backend.entity.UserTeam;
+import michlam.genshin_simulator_backend.entity.*;
 import michlam.genshin_simulator_backend.entity.keys.UserTeamKey;
 
 public class Mapper {
@@ -15,8 +12,7 @@ public class Mapper {
         return new UserDto (
                 user.getId(),
                 user.getUsername(),
-                user.getPassword(),
-                user.getRole()
+                user.getPassword()
         );
     }
     public static User mapToUser(UserDto userDto) {
@@ -24,7 +20,7 @@ public class Mapper {
                 userDto.getId(),
                 userDto.getUsername(),
                 userDto.getPassword(),
-                userDto.getRole()
+                Role.USER
         );
     }
 
