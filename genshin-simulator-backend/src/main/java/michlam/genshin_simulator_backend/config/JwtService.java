@@ -51,7 +51,7 @@ public class JwtService {
 
 
 
-    
+
     // Validate the token belongs to user
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
