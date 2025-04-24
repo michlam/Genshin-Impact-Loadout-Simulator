@@ -30,10 +30,9 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-
-
     @Enumerated(EnumType.STRING)
     private Role role;
+
 
     // Returns a list of roles that the user has
     @Override
