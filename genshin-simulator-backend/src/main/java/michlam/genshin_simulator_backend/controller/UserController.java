@@ -36,25 +36,14 @@ public class UserController {
             UserDto savedUserDto = userService.createUser(userDto);
             User savedUser = Mapper.mapToUser(savedUserDto);
 
+
+            // Generate the JWT
             String jwtToken = jwtService.generateToken(savedUser);
             return new ResponseEntity<>(
                     AuthenticationResponse.builder().token(jwtToken).build(),
                     HttpStatus.CREATED
             );
 
-//            @PostMapping("/register")
-//            public ResponseEntity<AuthenticationResponse> register(
-//                    @RequestBody RegisterRequest request
-//    ) {
-//                return ResponseEntity.ok(authenticationService.register(request));
-//            }
-            //         String jwtToken = jwtService.generateToken(user);
-//         return AuthenticationResponse.builder()
-//                 .token(jwtToken)
-//                 .build();
-
-
-//            return new ResponseEntity<>(savedUserDto, HttpStatus.CREATED);
         } catch (DuplicateResourceException e) {
             ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
