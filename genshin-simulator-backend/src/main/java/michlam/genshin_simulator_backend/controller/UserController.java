@@ -1,6 +1,7 @@
 package michlam.genshin_simulator_backend.controller;
 
 import lombok.AllArgsConstructor;
+import michlam.genshin_simulator_backend.config.JwtService;
 import michlam.genshin_simulator_backend.dto.UserCharacterDto;
 import michlam.genshin_simulator_backend.dto.UserDto;
 import michlam.genshin_simulator_backend.dto.UserTeamDto;
@@ -9,6 +10,8 @@ import michlam.genshin_simulator_backend.entity.UserTeam;
 import michlam.genshin_simulator_backend.exception.DuplicateResourceException;
 import michlam.genshin_simulator_backend.exception.ErrorResponse;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
+import michlam.genshin_simulator_backend.mapper.Mapper;
+import michlam.genshin_simulator_backend.service.AuthenticationService;
 import michlam.genshin_simulator_backend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +26,35 @@ import java.util.Map;
 @RequestMapping("/api/users") // Used to denote the base URL for any user-based apis.
 public class UserController {
     private UserService userService;
+    private JwtService jwtService;
 
 
     // Build Add User REST API
     @PostMapping("add") // Maps post to this method
     public ResponseEntity<Object> createUser(@RequestBody UserDto userDto) { // converts JSON body to Java object
         try {
-            UserDto savedUser = userService.createUser(userDto);
-            return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+            UserDto savedUserDto = userService.createUser(userDto);
+            User savedUser = Mapper.mapToUser(savedUserDto);
+
+            String jwtToken = jwtService.generateToken(savedUser);
+            return new ResponseEntity<>(
+                    AuthenticationResponse.builder().token(jwtToken).build(),
+                    HttpStatus.CREATED
+            );
+
+//            @PostMapping("/register")
+//            public ResponseEntity<AuthenticationResponse> register(
+//                    @RequestBody RegisterRequest request
+//    ) {
+//                return ResponseEntity.ok(authenticationService.register(request));
+//            }
+            //         String jwtToken = jwtService.generateToken(user);
+//         return AuthenticationResponse.builder()
+//                 .token(jwtToken)
+//                 .build();
+
+
+//            return new ResponseEntity<>(savedUserDto, HttpStatus.CREATED);
         } catch (DuplicateResourceException e) {
             ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
