@@ -26,7 +26,7 @@ public class UserController {
 
 
     // Build Add User REST API
-    @PostMapping // Maps post to this method
+    @PostMapping("add") // Maps post to this method
     public ResponseEntity<Object> createUser(@RequestBody UserDto userDto) { // converts JSON body to Java object
         try {
             UserDto savedUser = userService.createUser(userDto);
