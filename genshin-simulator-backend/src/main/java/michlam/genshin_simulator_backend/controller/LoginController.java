@@ -43,7 +43,11 @@ public class LoginController {
                 );
             } else {
                 String response = "Invalid credentials";
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+
+                return new ResponseEntity<>(
+                        response,
+                        HttpStatus.UNAUTHORIZED
+                );
             }
         } catch (Exception e) {
             ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage());

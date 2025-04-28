@@ -25,13 +25,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public AuthenticationResponse register(RegisterRequest request) {
-//        User user = new michlam.genshin_simulator_backend.entity.User(5,"","");
-//
-//        userRepository.save(user);
-//         String jwtToken = jwtService.generateToken(user);
-//         return AuthenticationResponse.builder()
-//                 .token(jwtToken)
-//                 .build();
+
         return null;
     }
 
