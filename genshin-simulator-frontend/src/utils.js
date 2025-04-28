@@ -14,7 +14,7 @@ export async function requireAuth(request) {
 }
 
  // WE ARE FAKING THE LOGIN WITH LOCAL STORAGE FOR NOW
-export function loginHelper(userId, username) {
+export function loginHelper(username, token) {
     localStorage.setItem("loggedin", true);
     localStorage.setItem("userId", userId);
     localStorage.setItem("username", username);

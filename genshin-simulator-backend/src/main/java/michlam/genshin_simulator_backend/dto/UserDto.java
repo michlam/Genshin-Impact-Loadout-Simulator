@@ -13,4 +13,5 @@ public class UserDto {
     private Long id;
     private String username;
     private String password;
+    // For now, we default everyone to USER.
 }
