@@ -11,9 +11,9 @@ export async function action({ request }) {
 
     try {
         const data = await loginUser(username, password);
-        const userId = parseInt(data.data.split(" ")[0]);
+        const jwtToken = data.data.token;
 
-        loginHelper(userId, username);
+        loginHelper(username, jwtToken);
         return redirect(pathname);
     } catch (err) {
         return err.message;

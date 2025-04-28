@@ -33,12 +33,12 @@ public class LoginController {
         try {
             if (loginService.login(username, password)) {
                 // In the future, create a JWT for user sessions.
-                String response = userService.getIdByUsername(username) + " Login successful";
+                Long userId = userService.getIdByUsername(username);
 
                 // Generate the JWT
                 String jwtToken = jwtService.generateToken(Mapper.mapToUser(userDto));
                 return new ResponseEntity<>(
-                        AuthenticationResponse.builder().token(jwtToken).build(),
+                        AuthenticationResponse.builder().userId(userId).token(jwtToken).build(),
                         HttpStatus.OK
                 );
             } else {

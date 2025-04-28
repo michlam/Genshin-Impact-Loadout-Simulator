@@ -34,12 +34,13 @@ public class UserController {
         try {
             UserDto savedUserDto = userService.createUser(userDto);
             User savedUser = Mapper.mapToUser(savedUserDto);
+            Long userId = userService.getIdByUsername(savedUser.getUsername());
 
 
             // Generate the JWT
             String jwtToken = jwtService.generateToken(savedUser);
             return new ResponseEntity<>(
-                    AuthenticationResponse.builder().token(jwtToken).build(),
+                    AuthenticationResponse.builder().userId(userId).token(jwtToken).build(),
                     HttpStatus.CREATED
             );
 
