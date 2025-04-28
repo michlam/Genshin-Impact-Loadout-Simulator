@@ -11,7 +11,6 @@ import michlam.genshin_simulator_backend.exception.DuplicateResourceException;
 import michlam.genshin_simulator_backend.exception.ErrorResponse;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import michlam.genshin_simulator_backend.mapper.Mapper;
-import michlam.genshin_simulator_backend.service.AuthenticationService;
 import michlam.genshin_simulator_backend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
