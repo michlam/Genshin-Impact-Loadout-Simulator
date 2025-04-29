@@ -18,7 +18,11 @@ export const getUserCharactersById = (userId) => {
         "id": userId
     }
 
-    return axios.post(REST_API_BASE_URL + "/characters", body);
+    return axios.post(REST_API_BASE_URL + "/characters", body, {
+        headers: {
+            'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+        }
+    });
 }
 
 export const unlockUserCharacter = (userId, charName) => {

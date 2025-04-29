@@ -6,7 +6,7 @@ export async function requireAuth(request) {
     // TEMPORARILY FAKING LOGIN SESSIONS BY STORING A VARIABLE IN LOCAL STORAGE
     const isLoggedIn = localStorage.getItem("loggedin")
 
-    if (!isLoggedIn) {
+    if (false) {
         throw redirect(
             `/login?redirectTo=${pathname}`
         )
@@ -23,9 +23,9 @@ export function loginHelper(userId, username, token) {
 }
 
 export function logoutHelper() {
-    localStorage.clear();
+    sessionStorage.clear();
 }
 
 export function getUserIdHelper() {
-    return localStorage.getItem("userId");
+    return sessionStorage.getItem("userId");
 }
