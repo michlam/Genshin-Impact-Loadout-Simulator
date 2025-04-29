@@ -14,7 +14,7 @@ export default function Header() {
     )
 
     const logoutElement = (
-        <NavLink to="login" style={({isActive}) => isActive ? activeStyles : null} onClick={() => { localStorage.clear() }} className={"navlink"}>
+        <NavLink to="login" style={({isActive}) => isActive ? activeStyles : null} onClick={() => { sessionStorage.clear() }} className={"navlink"}>
             Log Out
         </NavLink>
     )
@@ -31,7 +31,7 @@ export default function Header() {
                     Characters
                 </NavLink>
 
-                {localStorage.getItem("loggedin") ? logoutElement : loginElement}
+                {sessionStorage.getItem("userId") ? logoutElement : loginElement}
             </nav>
             
         </header>

@@ -29,6 +29,7 @@ public class UserController {
 
 
     // Build Add User REST API
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("add") // Maps post to this method
     public ResponseEntity<Object> createUser(@RequestBody UserDto userDto) { // converts JSON body to Java object
         try {
@@ -51,6 +52,7 @@ public class UserController {
     }
 
     // Build Get User By ID REST API
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping // Maps get to this method
     public ResponseEntity<Object> getUserById(@RequestBody Long userId) {
         try {
@@ -63,6 +65,7 @@ public class UserController {
     }
 
     // Build Update User REST API
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping // Maps put to this method
     public ResponseEntity<Object> updateUser(@RequestBody UserDto updatedUser) {
         try {
@@ -78,6 +81,7 @@ public class UserController {
     }
 
     // Build Unlock User Character REST API
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/characters/unlock")
     public ResponseEntity<Object> unlockUserCharacter(@RequestBody Map<String, String> json) {
         Long id = Long.parseLong(json.get("id"));
@@ -96,6 +100,7 @@ public class UserController {
     }
 
     // Build Get User Characters By ID REST API
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/characters") // Maps post to this method
     public ResponseEntity<Object> getUserCharactersById(@RequestBody Map<String, String> json) {
         Long userId = Long.parseLong(json.get("id"));
@@ -110,6 +115,7 @@ public class UserController {
     }
 
     // Build Get User Teams By ID REST API
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/teams")
     public ResponseEntity<Object> getUserTeamsById(@RequestBody Map<String, String> json) {
         Long userId = Long.parseLong(json.get("id"));
@@ -124,6 +130,7 @@ public class UserController {
     }
 
     // Build Update User Team REST API
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/teams")
     public ResponseEntity<Object> updateUserTeam(@RequestBody UserTeamDto updatedUserTeam) {
         try {
