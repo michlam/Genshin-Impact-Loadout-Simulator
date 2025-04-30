@@ -8,7 +8,7 @@ export default function Error() {
 
     return (
         <main className="error">
-            <h1>Oops, looks like there was a server error. Please try again later.</h1>
+            <h1>Oops, looks like there was an error. Please try logging in again.</h1>
             <img src={GanyuUpsetEmoji} />
         </main>
     )

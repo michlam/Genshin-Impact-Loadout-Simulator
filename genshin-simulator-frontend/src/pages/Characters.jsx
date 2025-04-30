@@ -8,8 +8,6 @@ import { useState } from "react";
 import CharInfo from "../components/CharInfo";
 
 export async function loader({ request }) {
-    // TODO: CHANGE THIS TO AUTHENTICATE VIA JWT SOMEHOW!
-    await requireAuth(request);
     const userId = getUserIdHelper();
     
     // We want a list of all characters, and a list of usercharacters
