@@ -38,6 +38,7 @@ public class JwtService {
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
         // 24 hours in ms
         int EXPIRATION_TIME = 24 * 60 * 60 * 1000;
+//        int EXPIRATION_TIME = 30 * 1000; // testing for 30 second expiry
 
         return Jwts
                 .builder()

@@ -2,15 +2,13 @@ import axios from "axios";
 
 const REST_API_BASE_URL = 'http://localhost:8080/api/users';
 
-
-
 export const signUpUser = (username, password) => {
     const signUpBody = {
         "username": username,
         "password": password
     };
 
-    return axios.post(REST_API_BASE_URL, signUpBody);
+    return axios.post(REST_API_BASE_URL + "/add", signUpBody);
 }
 
 export const getUserCharactersById = (userId) => {
@@ -31,7 +29,11 @@ export const unlockUserCharacter = (userId, charName) => {
         "name": charName
     }
 
-    return axios.post(REST_API_BASE_URL + "/characters/unlock", body);
+    return axios.post(REST_API_BASE_URL + "/characters/unlock", body, {
+        headers: {
+            'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+        }
+    });
 }
 
 export const getUserTeamsById = (userId) => {
@@ -39,9 +41,17 @@ export const getUserTeamsById = (userId) => {
         "id": userId
     }
 
-    return axios.post(REST_API_BASE_URL + "/teams", body);
+    return axios.post(REST_API_BASE_URL + "/teams", body, {
+        headers: {
+            'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+        }
+    });
 }
 
 export const updateUserTeam = (userTeam) => {
-    return axios.put(REST_API_BASE_URL + "/teams", userTeam);
+    return axios.put(REST_API_BASE_URL + "/teams", userTeam, {
+        headers: {
+            'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+        }
+    });
 }

@@ -1,13 +1,12 @@
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import { getUserCharactersById, getUserTeamsById } from "../services/UserService";
-import { getUserIdHelper, requireAuth } from "../utils";
+import { getUserIdHelper } from "../utils";
 import "./Teams.css";
 import { useState } from "react";
 import Selector from "../components/Selector";
 import { getBaseCharacters } from "../services/BaseCharacterService";
 
 export async function loader({ request }) {
-    await requireAuth(request);
     const userId = getUserIdHelper();
     
     const baseCharacters = await getBaseCharacters();

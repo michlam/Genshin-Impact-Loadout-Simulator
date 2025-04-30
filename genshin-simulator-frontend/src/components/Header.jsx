@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Components.css";
 import { Link, NavLink } from "react-router-dom";
 
@@ -31,7 +32,7 @@ export default function Header() {
                     Characters
                 </NavLink>
 
-                {sessionStorage.getItem("userId") ? logoutElement : loginElement}
+                {sessionStorage.getItem("isLoggedIn") ? logoutElement : loginElement}
             </nav>
             
         </header>

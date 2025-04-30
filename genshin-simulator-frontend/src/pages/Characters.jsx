@@ -1,6 +1,6 @@
 import { getBaseCharacters } from "../services/BaseCharacterService";
 import { getUserCharactersById } from "../services/UserService";
-import { getUserIdHelper, requireAuth } from "../utils";
+import { getUserIdHelper } from "../utils";
 import { useLoaderData, Await } from "react-router-dom";
 import CharListItem from "../components/CharListItem.jsx";
 import "./Characters.css"
@@ -8,9 +8,8 @@ import { useState } from "react";
 import CharInfo from "../components/CharInfo";
 
 export async function loader({ request }) {
-    // TODO: CHANGE THIS TO AUTHENTICATE VIA JWT SOMEHOW!
-    await requireAuth(request);
     const userId = getUserIdHelper();
+    console.log(sessionStorage.getItem("userId"));
     
     // We want a list of all characters, and a list of usercharacters
     const baseCharacters = await getBaseCharacters();
