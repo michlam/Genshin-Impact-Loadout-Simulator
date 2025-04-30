@@ -7,7 +7,6 @@ import Selector from "../components/Selector";
 import { getBaseCharacters } from "../services/BaseCharacterService";
 
 export async function loader({ request }) {
-    await requireAuth(request);
     const userId = getUserIdHelper();
     
     const baseCharacters = await getBaseCharacters();
