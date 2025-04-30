@@ -1,6 +1,6 @@
 import { getBaseCharacters } from "../services/BaseCharacterService";
 import { getUserCharactersById } from "../services/UserService";
-import { getUserIdHelper, requireAuth } from "../utils";
+import { getUserIdHelper } from "../utils";
 import { useLoaderData, Await } from "react-router-dom";
 import CharListItem from "../components/CharListItem.jsx";
 import "./Characters.css"

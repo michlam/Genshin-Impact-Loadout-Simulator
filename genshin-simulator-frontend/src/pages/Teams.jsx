@@ -1,6 +1,6 @@
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import { getUserCharactersById, getUserTeamsById } from "../services/UserService";
-import { getUserIdHelper, requireAuth } from "../utils";
+import { getUserIdHelper } from "../utils";
 import "./Teams.css";
 import { useState } from "react";
 import Selector from "../components/Selector";

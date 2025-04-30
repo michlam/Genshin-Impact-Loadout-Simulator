@@ -9,7 +9,7 @@ export async function action({ request }) {
 
     try {
         const data = await signUpUser(username, password);
-        return redirect("/");
+        return redirect("/login");
     } catch (err) {
         return err.message;
     }
