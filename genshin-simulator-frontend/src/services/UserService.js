@@ -29,7 +29,11 @@ export const unlockUserCharacter = (userId, charName) => {
         "name": charName
     }
 
-    return axios.post(REST_API_BASE_URL + "/characters/unlock", body);
+    return axios.post(REST_API_BASE_URL + "/characters/unlock", body, {
+        headers: {
+            'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+        }
+    });
 }
 
 export const getUserTeamsById = (userId) => {
@@ -37,9 +41,17 @@ export const getUserTeamsById = (userId) => {
         "id": userId
     }
 
-    return axios.post(REST_API_BASE_URL + "/teams", body);
+    return axios.post(REST_API_BASE_URL + "/teams", body, {
+        headers: {
+            'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+        }
+    });
 }
 
 export const updateUserTeam = (userTeam) => {
-    return axios.put(REST_API_BASE_URL + "/teams", userTeam);
+    return axios.put(REST_API_BASE_URL + "/teams", userTeam, {
+        headers: {
+            'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+        }
+    });
 }
