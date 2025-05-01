@@ -16,6 +16,7 @@ import michlam.genshin_simulator_backend.repository.UserCharacterRepository;
 import michlam.genshin_simulator_backend.repository.UserRepository;
 import michlam.genshin_simulator_backend.repository.UserTeamRepository;
 import michlam.genshin_simulator_backend.service.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,10 +30,13 @@ public class UserServiceImpl implements UserService {
     private BaseCharacterRepository baseCharacterRepository;
     private UserCharacterRepository userCharacterRepository;
     private UserTeamRepository userTeamRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDto createUser(UserDto userDto) {
         User user = Mapper.mapToUser(userDto);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             throw new DuplicateResourceException("Username is already taken");
         }
@@ -69,9 +73,10 @@ public class UserServiceImpl implements UserService {
         });
 
         user.setUsername(updatedUser.getUsername());
-        user.setPassword(updatedUser.getPassword()); // In the future, probably don't want to it this way.
+        user.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
 
         User updatedUserObj = userRepository.save(user);
+        updatedUserObj.setPassword(updatedUser.getPassword());
         return Mapper.mapToUserDto(updatedUserObj);
     }
 
