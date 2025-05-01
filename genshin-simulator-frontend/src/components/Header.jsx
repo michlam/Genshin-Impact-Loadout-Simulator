@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Components.css";
 import { Link, NavLink } from "react-router-dom";
 
@@ -15,7 +15,7 @@ export default function Header() {
     )
 
     const logoutElement = (
-        <NavLink to="login" style={({isActive}) => isActive ? activeStyles : null} onClick={() => { sessionStorage.clear() }} className={"navlink"}>
+        <NavLink to="login" style={({isActive}) => isActive ? activeStyles : null} onClick={() => { sessionStorage.clear(); console.log("logged out"); }} className={"navlink"}>
             Log Out
         </NavLink>
     )

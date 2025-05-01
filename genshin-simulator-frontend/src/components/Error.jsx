@@ -4,7 +4,6 @@ import "./Components.css";
 
 export default function Error() {
     const error = useRouteError();
-    console.log(error);
 
     return (
         <main className="error">
