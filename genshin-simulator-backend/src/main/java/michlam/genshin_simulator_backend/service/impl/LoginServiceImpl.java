@@ -16,7 +16,7 @@ public class LoginServiceImpl implements LoginService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public boolean login(String username, String password) {
+    public boolean login(String username, String password) throws ResourceNotFoundException {
         User user = userRepository.findByUsername(username).orElseThrow(() ->
                 new ResourceNotFoundException("User does not exist with the given username: " + username));
 
