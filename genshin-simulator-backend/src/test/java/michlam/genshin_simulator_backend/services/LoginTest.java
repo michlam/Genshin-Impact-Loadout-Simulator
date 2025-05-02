@@ -1,6 +1,7 @@
-package michlam.genshin_simulator_backend;
+package michlam.genshin_simulator_backend.services;
 
 import michlam.genshin_simulator_backend.controller.LoginController;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +13,15 @@ public class LoginTest {
 
     @Test
     void contextLoads() throws Exception {
+        Assertions.assert
     }
+
+//    @Test
+//    public void testName() {
+//        var result = service.isPalindrome("michael lam");
+//        Assertions.assertFalse(result);
+//    }
+    //  Assertions.assertThrows()
+    // Assertions.assertTrue;
 
 }
