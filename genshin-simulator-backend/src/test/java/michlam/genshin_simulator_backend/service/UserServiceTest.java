@@ -153,4 +153,40 @@ public class UserServiceTest {
         Assertions.assertEquals("Amber", userCharacterDto.getUserCharacterKey().getCharacter_name());
         Assertions.assertEquals(savedUser.getId(), userCharacterDto.getUserCharacterKey().getUser_id());
     }
+
+    @Test
+    void testUnlockUserCharacter_Failure_UserDoesNotExist() {
+        Assertions.assertThrows(
+                ResourceNotFoundException.class,
+                () -> userService.unlockUserCharacter(1L, "Amber")
+        );
+    }
+
+    @Test
+    void testUnlockUserCharacter_Failure_CharacterDoesNotExist() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("1234");
+        UserDto savedUser = userService.createUser(userDto);
+
+        Assertions.assertThrows(
+                ResourceNotFoundException.class,
+                () -> userService.unlockUserCharacter(savedUser.getId(), "Fake Character")
+        );
+    }
+
+    @Test
+    void testUnlockUserCharacter_Failure_AlreadyUnlocked() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("1234");
+        UserDto savedUser = userService.createUser(userDto);
+
+        userService.unlockUserCharacter(savedUser.getId(), "Amber");
+
+        Assertions.assertThrows(
+                DuplicateResourceException.class,
+                () -> userService.unlockUserCharacter(savedUser.getId(), "Amber")
+        );
+    }
 }
