@@ -16,6 +16,6 @@ public interface UserCharacterRepository extends JpaRepository<UserCharacter, Us
 
     @Transactional
     @Modifying
-    @NativeQuery("DELETE FROM genshin.user_characters WHERE user_id = (SELECT user_id FROM genshin.users WHERE username LIKE 'test%');")
+    @NativeQuery("DELETE FROM genshin.user_characters WHERE user_id IN (SELECT user_id FROM genshin.users WHERE username LIKE 'test%');")
     void testDeleteUserCharacters();
 }

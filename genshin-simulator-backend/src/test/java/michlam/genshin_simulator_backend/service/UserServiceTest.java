@@ -3,6 +3,7 @@ package michlam.genshin_simulator_backend.service;
 import io.jsonwebtoken.lang.Assert;
 import michlam.genshin_simulator_backend.controller.BaseCharacterController;
 import michlam.genshin_simulator_backend.controller.UserController;
+import michlam.genshin_simulator_backend.dto.UserCharacterDto;
 import michlam.genshin_simulator_backend.dto.UserDto;
 import michlam.genshin_simulator_backend.entity.User;
 import michlam.genshin_simulator_backend.entity.UserTeam;
@@ -121,12 +122,7 @@ public class UserServiceTest {
 
     @Test
     void testUpdateUser_Failure_UserDoesNotExist() {
-        UserDto userDto = new UserDto();
-        userDto.setUsername("test.user.1");
-        userDto.setPassword("1234");
-
         UserDto fakeUser = new UserDto(1L, "test.user.2", "2345");
-
         Assertions.assertThrows(ResourceNotFoundException.class, () -> userService.updateUser(fakeUser));
     }
 
@@ -140,9 +136,21 @@ public class UserServiceTest {
         UserDto second = new UserDto();
         second.setUsername("test.user.2");
         second.setPassword("2345");
-        UserDto secondSaved = userService.createUser(second);
+        userService.createUser(second);
 
         firstSaved.setUsername("test.user.2");
         Assertions.assertThrows(DuplicateResourceException.class, () -> userService.updateUser(firstSaved));
+    }
+
+    @Test
+    void testUnlockUserCharacter_Success() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("1234");
+        UserDto savedUser = userService.createUser(userDto);
+
+        UserCharacterDto userCharacterDto = userService.unlockUserCharacter(savedUser.getId(), "Amber");
+        Assertions.assertEquals("Amber", userCharacterDto.getUserCharacterKey().getCharacter_name());
+        Assertions.assertEquals(savedUser.getId(), userCharacterDto.getUserCharacterKey().getUser_id());
     }
 }

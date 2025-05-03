@@ -21,6 +21,6 @@ public interface UserTeamRepository extends JpaRepository<UserTeam, UserTeamKey>
 
     @Transactional
     @Modifying
-    @NativeQuery("DELETE FROM genshin.user_teams WHERE user_id = (SELECT user_id FROM genshin.users WHERE username LIKE 'test%');")
+    @NativeQuery("DELETE FROM genshin.user_teams WHERE user_id IN (SELECT user_id FROM genshin.users WHERE username LIKE 'test%');")
     void testDeleteUserTeams();
 }
