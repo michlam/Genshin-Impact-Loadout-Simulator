@@ -4,6 +4,7 @@ import io.jsonwebtoken.lang.Assert;
 import michlam.genshin_simulator_backend.controller.BaseCharacterController;
 import michlam.genshin_simulator_backend.controller.UserController;
 import michlam.genshin_simulator_backend.dto.UserDto;
+import michlam.genshin_simulator_backend.entity.UserTeam;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import michlam.genshin_simulator_backend.repository.UserCharacterRepository;
 import michlam.genshin_simulator_backend.repository.UserRepository;
@@ -12,6 +13,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 @SpringBootTest
 public class UserServiceTest {
@@ -48,12 +51,16 @@ public class UserServiceTest {
         UserDto savedUser = userService.createUser(userDto);
         Assertions.assertEquals(userDto.getUsername(), savedUser.getUsername());
         Assertions.assertEquals(userDto.getPassword(), savedUser.getPassword());
-    }
 
-//    void testLogin_BasicSuccess() {
-//        String username = "test.user";
-//        String password = "1234";
-//
-//        Assertions.assertTrue(loginService.login(username, password));
-//    }
+        // Check the eight user teams are created and correct
+        List<UserTeam> userTeams = userService.getUserTeamsById(savedUser.getId());
+        Assertions.assertEquals(8, userTeams.size());
+        Assertions.assertEquals(savedUser.getId(), userTeams.get(0).getUserTeamKey().getUser_id());
+        Assertions.assertEquals(1, userTeams.get(0).getUserTeamKey().getTeam_num());
+        Assertions.assertEquals(8, userTeams.get(7).getUserTeamKey().getTeam_num());
+        Assertions.assertNull(userTeams.get(0).getCharacter_name_1());
+        Assertions.assertNull(userTeams.get(0).getCharacter_name_2());
+        Assertions.assertNull(userTeams.get(0).getCharacter_name_3());
+        Assertions.assertNull(userTeams.get(0).getCharacter_name_4());
+    }
 }
