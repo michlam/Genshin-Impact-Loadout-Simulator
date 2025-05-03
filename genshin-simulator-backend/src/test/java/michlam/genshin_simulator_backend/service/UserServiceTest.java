@@ -12,6 +12,7 @@ import michlam.genshin_simulator_backend.repository.UserCharacterRepository;
 import michlam.genshin_simulator_backend.repository.UserRepository;
 import michlam.genshin_simulator_backend.repository.UserTeamRepository;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,12 +36,16 @@ public class UserServiceTest {
     @Autowired
     private UserCharacterRepository userCharacterRepository;
 
-    @Test
-    void contextLoads() throws Exception {
-        Assertions.assertNotNull(userController);
+    @BeforeEach
+    void setUp() {
         userTeamRepository.testDeleteUserTeams();
         userCharacterRepository.testDeleteUserCharacters();
         userRepository.testDeleteUsers();
+    }
+
+    @Test
+    void contextLoads() throws Exception {
+        Assertions.assertNotNull(userController);
     }
 
     @Test
@@ -78,5 +83,66 @@ public class UserServiceTest {
 
         userService.createUser(first);
         Assertions.assertThrows(DuplicateResourceException.class, () -> userService.createUser(second));
+    }
+
+    @Test
+    void testGetUserById_Success() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("1234");
+
+        UserDto savedUser = userService.createUser(userDto);
+        UserDto compareUser = userService.getUserById(savedUser.getId());
+
+        Assertions.assertEquals(savedUser.getId(), compareUser.getId());
+        Assertions.assertEquals(savedUser.getUsername(), compareUser.getUsername());
+    }
+
+    @Test
+    void testGetUserById_Failure_UserDoesNotExist() {
+        Assertions.assertThrows(ResourceNotFoundException.class, () -> userService.getUserById(1L));
+    }
+
+    @Test
+    void testUpdateUser_Success() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("1234");
+
+        UserDto savedUser = userService.createUser(userDto);
+        savedUser.setUsername("test.user.2");
+        savedUser.setPassword("2345");
+
+        UserDto compareUser = userService.updateUser(savedUser);
+        Assertions.assertEquals(savedUser.getId(), compareUser.getId());
+        Assertions.assertEquals(savedUser.getUsername(), compareUser.getUsername());
+        Assertions.assertEquals(savedUser.getPassword(), compareUser.getPassword());
+    }
+
+    @Test
+    void testUpdateUser_Failure_UserDoesNotExist() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("1234");
+
+        UserDto fakeUser = new UserDto(1L, "test.user.2", "2345");
+
+        Assertions.assertThrows(ResourceNotFoundException.class, () -> userService.updateUser(fakeUser));
+    }
+
+    @Test
+    void testUpdateUser_Failure_UsernameExists() {
+        UserDto first = new UserDto();
+        first.setUsername("test.user.1");
+        first.setPassword("1234");
+        UserDto firstSaved = userService.createUser(first);
+
+        UserDto second = new UserDto();
+        second.setUsername("test.user.2");
+        second.setPassword("2345");
+        UserDto secondSaved = userService.createUser(second);
+
+        firstSaved.setUsername("test.user.2");
+        Assertions.assertThrows(DuplicateResourceException.class, () -> userService.updateUser(firstSaved));
     }
 }
