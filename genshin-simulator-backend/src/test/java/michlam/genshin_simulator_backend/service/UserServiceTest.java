@@ -4,7 +4,9 @@ import io.jsonwebtoken.lang.Assert;
 import michlam.genshin_simulator_backend.controller.BaseCharacterController;
 import michlam.genshin_simulator_backend.controller.UserController;
 import michlam.genshin_simulator_backend.dto.UserDto;
+import michlam.genshin_simulator_backend.entity.User;
 import michlam.genshin_simulator_backend.entity.UserTeam;
+import michlam.genshin_simulator_backend.exception.DuplicateResourceException;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import michlam.genshin_simulator_backend.repository.UserCharacterRepository;
 import michlam.genshin_simulator_backend.repository.UserRepository;
@@ -62,5 +64,19 @@ public class UserServiceTest {
         Assertions.assertNull(userTeams.get(0).getCharacter_name_2());
         Assertions.assertNull(userTeams.get(0).getCharacter_name_3());
         Assertions.assertNull(userTeams.get(0).getCharacter_name_4());
+    }
+
+    @Test
+    void testCreateUser_Fail_UsernameExists() {
+        UserDto first = new UserDto();
+        first.setUsername("test.user.1");
+        first.setPassword("1234");
+
+        UserDto second = new UserDto();
+        second.setUsername("test.user.1");
+        second.setPassword("2345");
+
+        userService.createUser(first);
+        Assertions.assertThrows(DuplicateResourceException.class, () -> userService.createUser(second));
     }
 }
