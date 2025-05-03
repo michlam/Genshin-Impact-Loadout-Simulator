@@ -1,14 +1,15 @@
 package michlam.genshin_simulator_backend.service;
 
-import io.jsonwebtoken.lang.Assert;
-import michlam.genshin_simulator_backend.controller.BaseCharacterController;
 import michlam.genshin_simulator_backend.controller.UserController;
 import michlam.genshin_simulator_backend.dto.UserCharacterDto;
 import michlam.genshin_simulator_backend.dto.UserDto;
+import michlam.genshin_simulator_backend.dto.UserTeamDto;
 import michlam.genshin_simulator_backend.entity.User;
 import michlam.genshin_simulator_backend.entity.UserTeam;
+import michlam.genshin_simulator_backend.entity.keys.UserTeamKey;
 import michlam.genshin_simulator_backend.exception.DuplicateResourceException;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
+import michlam.genshin_simulator_backend.mapper.Mapper;
 import michlam.genshin_simulator_backend.repository.UserCharacterRepository;
 import michlam.genshin_simulator_backend.repository.UserRepository;
 import michlam.genshin_simulator_backend.repository.UserTeamRepository;
@@ -230,6 +231,68 @@ public class UserServiceTest {
         Assertions.assertThrows(
                 ResourceNotFoundException.class,
                 () -> userService.getIdByUsername("test.user.fake")
+        );
+    }
+
+    @Test
+    void testGetUserTeamsById_Failure() {
+        Assertions.assertThrows(
+                ResourceNotFoundException.class,
+                () -> userService.getUserTeamsById(1L)
+        );
+    }
+
+    @Test
+    void testUpdateUserTeam_Success() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("1234");
+        UserDto savedUser = userService.createUser(userDto);
+
+        List<UserTeam> userTeams = userService.getUserTeamsById(savedUser.getId());
+        UserTeam userTeam = userTeams.get(0);
+        userTeam.setCharacter_name_1("Amber");
+        userTeam.setCharacter_name_3("Lisa");
+
+        UserTeamDto compareUserTeamDto = userService.updateUserTeam(Mapper.mapToUserTeamDto(userTeam));
+        UserTeam compareUserTeam = Mapper.mapToUserTeam(compareUserTeamDto);
+        Assertions.assertEquals(userTeam.getUserTeamKey().getTeam_num(), compareUserTeam.getUserTeamKey().getTeam_num());
+        Assertions.assertEquals(userTeam.getUserTeamKey().getUser_id(), compareUserTeam.getUserTeamKey().getUser_id());
+        Assertions.assertEquals(userTeam.getCharacter_name_1(), compareUserTeam.getCharacter_name_1());
+        Assertions.assertEquals(userTeam.getCharacter_name_2(), compareUserTeam.getCharacter_name_2());
+        Assertions.assertEquals(userTeam.getCharacter_name_3(), compareUserTeam.getCharacter_name_3());
+        Assertions.assertEquals(userTeam.getCharacter_name_4(), compareUserTeam.getCharacter_name_4());
+
+        userTeam.setCharacter_name_3(null);
+        UserTeamDto compareUserTeamDto2 = userService.updateUserTeam(Mapper.mapToUserTeamDto(userTeam));
+        UserTeam compareUserTeam2 = Mapper.mapToUserTeam(compareUserTeamDto2);
+        Assertions.assertNull(compareUserTeam2.getCharacter_name_3());
+    }
+
+    @Test
+    void testUpdateUserTeam_Failure_UserDoesNotExist() {
+        UserTeamKey userTeamKey = new UserTeamKey(1L, 2);
+        UserTeamDto userTeamDto = new UserTeamDto(userTeamKey, null, null, null, null);
+
+        Assertions.assertThrows(
+                ResourceNotFoundException.class,
+                () -> userService.updateUserTeam(userTeamDto)
+        );
+    }
+
+    @Test
+    void testUpdateUserTeam_Failure_TeamNumDoesNotExist() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("1234");
+        UserDto savedUser = userService.createUser(userDto);
+
+        UserTeamKey userTeamKey = new UserTeamKey(savedUser.getId(), 50);
+        UserTeamDto userTeamDto = new UserTeamDto(userTeamKey, null, null, null, null);
+
+        Assertions.assertThrows(
+                ResourceNotFoundException.class,
+                () -> userService.updateUserTeam(userTeamDto)
         );
     }
 
