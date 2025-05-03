@@ -189,4 +189,30 @@ public class UserServiceTest {
                 () -> userService.unlockUserCharacter(savedUser.getId(), "Amber")
         );
     }
+
+    @Test
+    void testGetUserCharactersById_Success() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("1234");
+        UserDto savedUser = userService.createUser(userDto);
+
+        userService.unlockUserCharacter(savedUser.getId(), "Amber");
+        userService.unlockUserCharacter(savedUser.getId(), "Barbara");
+
+        List<String> userCharacters = userService.getUserCharactersById(savedUser.getId());
+        Assertions.assertEquals(2, userCharacters.size());
+        Assertions.assertEquals("Amber", userCharacters.get(0));
+        Assertions.assertEquals("Barbara", userCharacters.get(1));
+    }
+
+    @Test
+    void testGetUserCharactersById_Failure_UserDoesNotExist() {
+        Assertions.assertThrows(
+                ResourceNotFoundException.class,
+                () -> userService.getUserById(1L)
+        );
+    }
+
+
 }
