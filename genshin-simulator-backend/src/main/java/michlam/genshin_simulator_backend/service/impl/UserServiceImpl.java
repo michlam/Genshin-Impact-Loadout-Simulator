@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService {
             userTeamRepository.save(userTeam);
         }
 
+        savedUser.setPassword(userDto.getPassword());
         return Mapper.mapToUserDto(savedUser);
     }
 
