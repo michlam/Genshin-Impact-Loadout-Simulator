@@ -11,4 +11,7 @@ import java.util.List;
 public interface UserCharacterRepository extends JpaRepository<UserCharacter, UserCharacterKey> {
     @NativeQuery("SELECT character_name FROM genshin.user_characters WHERE user_id = ?1")
     List<String> findCharactersById(@Param("user_id") Long user_id);
+
+    @NativeQuery("DELETE FROM genshin.user_characters WHERE user_id = (SELECT user_id FROM genshin.users WHERE username LIKE 'test%');")
+    void testDeleteUserCharacters();
 }
