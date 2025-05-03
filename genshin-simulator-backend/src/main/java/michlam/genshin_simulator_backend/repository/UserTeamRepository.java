@@ -16,4 +16,7 @@ public interface UserTeamRepository extends JpaRepository<UserTeam, UserTeamKey>
 
     @NativeQuery("SELECT * FROM genshin.user_teams WHERE user_id = ?1 AND team_num = ?2")
     UserTeam findTeamByIdAndNum(@Param("user_id") Long user_id, @Param("team_num") Integer team_num);
+
+    @NativeQuery("DELETE FROM genshin.user_teams WHERE user_id = (SELECT user_id FROM genshin.users WHERE username LIKE 'test%');")
+    void testDeleteUserTeams();
 }
