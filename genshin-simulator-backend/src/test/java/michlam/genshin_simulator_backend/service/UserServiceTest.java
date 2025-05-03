@@ -5,6 +5,9 @@ import michlam.genshin_simulator_backend.controller.BaseCharacterController;
 import michlam.genshin_simulator_backend.controller.UserController;
 import michlam.genshin_simulator_backend.dto.UserDto;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
+import michlam.genshin_simulator_backend.repository.UserCharacterRepository;
+import michlam.genshin_simulator_backend.repository.UserRepository;
+import michlam.genshin_simulator_backend.repository.UserTeamRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +21,21 @@ public class UserServiceTest {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserTeamRepository userTeamRepository;
+
+    @Autowired
+    private UserCharacterRepository userCharacterRepository;
+
     @Test
     void contextLoads() throws Exception {
         Assertions.assertNotNull(userController);
+        userTeamRepository.testDeleteUserTeams();
+        userCharacterRepository.testDeleteUserCharacters();
+        userRepository.testDeleteUsers();
     }
 
     @Test
