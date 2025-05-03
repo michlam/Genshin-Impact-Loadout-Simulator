@@ -36,7 +36,6 @@ public class BaseCharacterServiceTest {
             Assertions.assertEquals(baseChar.getElement(), currChar.getElement());
             Assertions.assertEquals(baseChar.getTitle(), currChar.getTitle());
             Assertions.assertEquals(baseChar.getWeapon_type(), currChar.getWeapon_type());
-
         }
     }
 

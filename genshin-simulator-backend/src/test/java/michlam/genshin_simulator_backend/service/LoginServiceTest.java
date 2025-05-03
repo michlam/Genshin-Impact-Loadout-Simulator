@@ -47,17 +47,4 @@ public class LoginServiceTest {
         Assertions.assertThrows(ResourceNotFoundException.class, () -> loginService.login(username, password));
     }
 
-//    public class LoginServiceImpl implements LoginService {
-//        private UserRepository userRepository;
-//        private PasswordEncoder passwordEncoder;
-//
-//        @Override
-//        public boolean login(String username, String password) {
-//            User user = userRepository.findByUsername(username).orElseThrow(() ->
-//                    new ResourceNotFoundException("User does not exist with the given username: " + username));
-//
-//            return passwordEncoder.matches(password, user.getPassword());
-//        }
-//    }
-
 }
