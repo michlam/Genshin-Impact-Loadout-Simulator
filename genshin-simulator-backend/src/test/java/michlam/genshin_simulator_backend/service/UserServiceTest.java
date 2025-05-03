@@ -214,5 +214,24 @@ public class UserServiceTest {
         );
     }
 
+    @Test
+    void testGetIdByUsername_Success() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("1234");
+        UserDto savedUser = userService.createUser(userDto);
+
+        Long id = userService.getIdByUsername(userDto.getUsername());
+        Assertions.assertEquals(savedUser.getId(), id);
+    }
+
+    @Test
+    void testGetIdByUsername_Failure_UserDoesNotExist() {
+        Assertions.assertThrows(
+                ResourceNotFoundException.class,
+                () -> userService.getIdByUsername("test.user.fake")
+        );
+    }
+
 
 }
