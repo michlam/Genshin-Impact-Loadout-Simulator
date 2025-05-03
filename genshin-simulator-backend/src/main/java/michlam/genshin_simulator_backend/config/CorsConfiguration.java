@@ -11,6 +11,8 @@ import java.util.List;
 
 @Configuration
 public class CorsConfiguration {
+
+    // TODO: When adding Ngrok tunneling, may need to add additional allowed origins!
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         org.springframework.web.cors.CorsConfiguration configuration = new org.springframework.web.cors.CorsConfiguration();
