@@ -97,7 +97,9 @@ main.characters {
 
     background-color: rgba(0, 0, 0, 0.719);
     color: white;
-    padding: 5% 80% 5% 7%;
+    /* padding: 5% 80% 5% 7%; */
+    width: 100%;
+    padding: 5% 0% 5% 7%;
 }
 
 
