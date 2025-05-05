@@ -1,29 +1,21 @@
-import { getBaseCharacters } from "../services/BaseCharacterService";
-import { getUserCharactersById } from "../services/UserService";
+import { useLoaderData } from "react-router-dom";
+import { getBaseWeapons } from "../services/BaseWeaponService";
 import { getUserIdHelper } from "../utils";
 import "./Weapons.css"
+import { useState } from "react";
 
 export async function loader({ request }) {
-    // const userId = getUserIdHelper();
-    // console.log(sessionStorage.getItem("userId"));
-    
-    // // We want a list of all characters, and a list of usercharacters
-    // const baseCharacters = await getBaseCharacters();
-    // const userCharacters = await getUserCharactersById(userId);
+    const userId = getUserIdHelper();
+    const baseWeapons = await getBaseWeapons();
 
-    // return {
-    //     "baseCharacters": baseCharacters.data,
-    //     "userCharacters": userCharacters.data,
-    // }
+    return {
+        "baseWeapons": baseWeapons.data,
+    }
 }
 
 export default function Weapons() {
-    // const {baseCharacters, userCharacters} = useLoaderData();
-    // const [charFocus, setCharFocus] = useState(null);
-  
-    // const char = getCharacterInfo(charFocus, baseCharacters);
-    // let isUnlocked = false;
-    // if (char) isUnlocked = userCharacters.includes(char.name);
+    const {baseWeapons} = useLoaderData();
+    const [weaponFocus, setWeaponFocus] = useState(null);
 
 
     return (
