@@ -81,7 +81,7 @@ main.weapons {
 
 .three-star {
     background: rgb(0,249,255);
-    background: radial-gradient(at bottom right, rgba(0,249,255,1) 0%, rgb(131, 98, 223) 28%, rgb(17, 0, 255) 55%, rgb(31, 22, 71) 100%);
+    background: radial-gradient(at bottom right, rgba(0,249,255,1) 0%, rgb(91, 60, 175) 28%, rgb(39, 25, 230) 55%, rgb(31, 22, 71) 100%);
 }
 
 
