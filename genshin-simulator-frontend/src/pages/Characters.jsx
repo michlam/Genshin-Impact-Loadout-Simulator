@@ -9,7 +9,6 @@ import CharInfo from "../components/CharInfo";
 
 export async function loader({ request }) {
     const userId = getUserIdHelper();
-    console.log(sessionStorage.getItem("userId"));
     
     // We want a list of all characters, and a list of usercharacters
     const baseCharacters = await getBaseCharacters();

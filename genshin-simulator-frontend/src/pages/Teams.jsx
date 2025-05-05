@@ -37,26 +37,24 @@ function renderTeams(userTeams, setFocus) {
 
 function renderTeam(teamNum, char1, char2, char3, char4, setFocus) {
     const userTeamElement = (
-        <>
-            <details className="team" key={teamNum} name="team">
-                <summary>{`Team ${teamNum}`}</summary>
-                <div className="team-content">
-                    <div className="char-container char1" onClick={() => setFocus({"teamNum": teamNum, "charNum": 1})}>
-                        {char1 ? <img src={getImagePath(char1)} /> : <p>No character selected</p>}
-                    </div>
-                    <div className="char-container char2" onClick={() => setFocus({"teamNum": teamNum, "charNum": 2})}>
-                        {char2 ? <img src={getImagePath(char2)} /> : <p>No character selected</p>}
-                    </div>
-                    <div className="char-container char3" onClick={() => setFocus({"teamNum": teamNum, "charNum": 3})}>
-                        {char3 ? <img src={getImagePath(char3)} /> : <p>No character selected</p>}
-                    </div>
-                    <div className="char-container char4" onClick={() => setFocus({"teamNum": teamNum, "charNum": 4})}>
-                        {char4 ? <img src={getImagePath(char4)} /> : <p>No character selected</p>}
-                    </div>
- 
+        <details className="team" key={teamNum} name="team">
+            <summary>{`Team ${teamNum}`}</summary>
+            <div className="team-content">
+                <div className="char-container char1" onClick={() => setFocus({"teamNum": teamNum, "charNum": 1})}>
+                    {char1 ? <img src={getImagePath(char1)} /> : <p>No character selected</p>}
                 </div>
-            </details>
-        </>
+                <div className="char-container char2" onClick={() => setFocus({"teamNum": teamNum, "charNum": 2})}>
+                    {char2 ? <img src={getImagePath(char2)} /> : <p>No character selected</p>}
+                </div>
+                <div className="char-container char3" onClick={() => setFocus({"teamNum": teamNum, "charNum": 3})}>
+                    {char3 ? <img src={getImagePath(char3)} /> : <p>No character selected</p>}
+                </div>
+                <div className="char-container char4" onClick={() => setFocus({"teamNum": teamNum, "charNum": 4})}>
+                    {char4 ? <img src={getImagePath(char4)} /> : <p>No character selected</p>}
+                </div>
+
+                </div>
+        </details>
     )
 
     return userTeamElement;

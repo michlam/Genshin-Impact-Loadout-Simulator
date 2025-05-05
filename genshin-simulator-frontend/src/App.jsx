@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound.jsx'
 import Landing from './pages/Landing'
 import Teams, {loader as teamsLoader} from './pages/Teams'
 import Characters, {loader as charactersLoader} from './pages/Characters'
+import Weapons, {loader as weaponsLoader} from './pages/Weapons'
 import Error from './components/Error'
 
 
@@ -19,6 +20,7 @@ function App() {
 
       <Route path="teams" loader={teamsLoader} element={<Teams />} errorElement={<Error />}/>
       <Route path="characters" loader={charactersLoader} element={<Characters />} errorElement={<Error />}/>
+      <Route path="weapons" loader={weaponsLoader} element={<Weapons />} errorElement={<Error />}/>
 
       <Route path="*" element={<NotFound />} />
     </Route>

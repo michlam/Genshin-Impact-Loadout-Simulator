@@ -1,0 +1,87 @@
+@font-face {
+    font-family: "Genshin";
+    src: url('./assets/fonts/Genshin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#root {
+    font-size: 16px;
+    font-family: "Genshin";
+  
+    /* COLOURS */
+    --ivory: #eaecc6;
+    --cinnabar: #e94f37;
+    --onyx: #393e41;
+    --steel-blue: #3f88c5;
+    --keppel: #44bba4;
+
+    --light-ivory: #f2fedc;
+}
+
+
+main.weapons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+}
+
+.weapon-list {
+    background-color: var(--light-ivory);
+    min-width: 500px;
+    width: 45dvw;
+    
+    padding: 40px 40px 40px;
+    border-radius: 8px;
+    border: 3px solid var(--onyx);
+    box-shadow: 0px 8px 50px 3px rgba(153, 153, 153, 0.034);
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 15px;
+}
+
+.weapon-list > legend {
+    font-size: 2.4rem;
+    padding: 0px 10px;
+    margin-left: 0.8em;
+    color: var(--onyx);
+}
+
+.weapon-list::after {
+    content: "";
+}
+
+.weapon-list-item {
+    border: 3px solid transparent;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.weapon-list-item:hover {
+    border-color: var(--onyx);
+}
+
+.weapon-img-container {
+    height: 100px;
+    padding: 0;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.weapon-img-container > img {
+    padding: 0;
+    width: 100px;
+}
+
+.three-star {
+    background: rgb(0,249,255);
+    background: radial-gradient(at bottom right, rgba(0,249,255,1) 0%, rgb(91, 60, 175) 28%, rgb(39, 25, 230) 55%, rgb(31, 22, 71) 100%);
+}
+
+
