@@ -7,6 +7,7 @@ import michlam.genshin_simulator_backend.exception.ErrorResponse;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import michlam.genshin_simulator_backend.service.BaseCharacterService;
 import michlam.genshin_simulator_backend.service.BaseWeaponService;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,21 +31,15 @@ public class BaseWeaponController {
     }
 
     // Build Get Base Weapon By Name API
+    @GetMapping("/api/base-weapons/{name}")
+    public ResponseEntity<Object> getBaseWeaponByName(@PathVariable String name) {
+        try {
+            BaseWeaponDto baseWeaponDto = baseWeaponService.getBaseWeaponByName(name);
+            return ResponseEntity.ok(baseWeaponDto);
+        } catch (ResourceNotFoundException e) {
+            ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+    }
 
 }
-
-
-
-//    // Build Get Base Character By Name REST API
-//    @GetMapping("/api/base-characters/{name}")
-//    public ResponseEntity<Object> getBaseCharacterByName(@PathVariable String name) {
-//        try {
-//            BaseCharacterDto baseCharacterDto = baseCharacterService.getBaseCharacterByName(name);
-//            return ResponseEntity.ok(baseCharacterDto);
-//        } catch (ResourceNotFoundException e) {
-//            ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-//        }
-//    }
-//
-//}

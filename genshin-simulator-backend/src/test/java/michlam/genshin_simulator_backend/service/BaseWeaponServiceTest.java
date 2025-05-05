@@ -1,6 +1,7 @@
 package michlam.genshin_simulator_backend.service;
 
 import io.jsonwebtoken.lang.Assert;
+import michlam.genshin_simulator_backend.controller.BaseWeaponController;
 import michlam.genshin_simulator_backend.dto.BaseWeaponDto;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import org.junit.jupiter.api.Assertions;
@@ -12,16 +13,16 @@ import java.util.List;
 
 @SpringBootTest
 public class BaseWeaponServiceTest {
-//    @Autowired
-//    private BaseWeaponController baseWeaponController;
+    @Autowired
+    private BaseWeaponController baseWeaponController;
 
     @Autowired
     private BaseWeaponService baseWeaponService;
 
-//    @Test
-//    void contextLoads() throws Exception {
-//        Assertions.assertNotNull(baseCharacterController);
-//    }
+    @Test
+    void contextLoads() throws Exception {
+        Assertions.assertNotNull(baseWeaponController);
+    }
 
     @Test
     void testGetBaseWeapons() {
