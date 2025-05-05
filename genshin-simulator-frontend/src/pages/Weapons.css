@@ -54,3 +54,34 @@ main.weapons {
 .weapon-list::after {
     content: "";
 }
+
+.weapon-list-item {
+    border: 3px solid transparent;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.weapon-list-item:hover {
+    border-color: var(--onyx);
+}
+
+.weapon-img-container {
+    height: 100px;
+    padding: 0;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.weapon-img-container > img {
+    padding: 0;
+    width: 100px;
+}
+
+.three-star {
+    background: rgb(0,249,255);
+    background: radial-gradient(at bottom right, rgba(0,249,255,1) 0%, rgb(131, 98, 223) 28%, rgb(17, 0, 255) 55%, rgb(31, 22, 71) 100%);
+}
+
+
