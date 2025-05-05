@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ser.Serializers;
 import io.jsonwebtoken.lang.Assert;
 import michlam.genshin_simulator_backend.controller.BaseCharacterController;
 import michlam.genshin_simulator_backend.dto.BaseCharacterDto;
+import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +71,14 @@ public class BaseCharacterServiceTest {
         Assertions.assertEquals("Pyro", xiangling.getElement());
         Assertions.assertEquals("Exquisite Delicacy", xiangling.getTitle());
         Assertions.assertEquals("Polearm", xiangling.getWeapon_type());
+    }
+
+    @Test
+    void testGetBaseCharactersByName_CharDoesNotExist() {
+        Assertions.assertThrows(
+                ResourceNotFoundException.class,
+                () -> baseCharacterService.getBaseCharacterByName("FakeCharacter")
+        );
     }
 
 }

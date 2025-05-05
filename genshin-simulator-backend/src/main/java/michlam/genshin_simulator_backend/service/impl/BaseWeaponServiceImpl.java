@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import michlam.genshin_simulator_backend.dto.BaseCharacterDto;
 import michlam.genshin_simulator_backend.dto.BaseWeaponDto;
 import michlam.genshin_simulator_backend.entity.BaseCharacter;
+import michlam.genshin_simulator_backend.entity.BaseWeapon;
+import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import michlam.genshin_simulator_backend.mapper.Mapper;
 import michlam.genshin_simulator_backend.repository.BaseCharacterRepository;
 import michlam.genshin_simulator_backend.repository.BaseWeaponRepository;
@@ -20,21 +22,21 @@ public class BaseWeaponServiceImpl implements BaseWeaponService {
 
     @Override
     public List<BaseWeaponDto> getBaseWeapons() {
+        List<BaseWeapon> baseWeapons = baseWeaponRepository.findAll();
+        List<BaseWeaponDto> baseWeaponDtos = new ArrayList<>();
 
-        return List.of();
-//
-//        List<BaseCharacter> baseCharacters = baseCharacterRepository.findAll();
-//        List<BaseCharacterDto> baseCharacterDtos = new ArrayList<BaseCharacterDto>();
-//
-//        for (BaseCharacter baseCharacter : baseCharacters) {
-//            baseCharacterDtos.add(Mapper.mapToBaseCharacterDto(baseCharacter));
-//        }
-//
-//        return baseCharacterDtos;
+        for (BaseWeapon baseWeapon : baseWeapons) {
+            baseWeaponDtos.add(Mapper.mapToBaseWeaponDto(baseWeapon));
+        }
+
+        return baseWeaponDtos;
     }
 
     @Override
     public BaseWeaponDto getBaseWeaponByName(String name) {
-        return null;
+        BaseWeapon baseWeapon = baseWeaponRepository.findByName(name).orElseThrow(() ->
+                new ResourceNotFoundException("Base weapon does not exist with the given name: " + name));
+
+        return Mapper.mapToBaseWeaponDto(baseWeapon);
     }
 }

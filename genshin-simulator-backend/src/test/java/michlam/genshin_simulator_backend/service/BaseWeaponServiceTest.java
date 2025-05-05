@@ -1,6 +1,8 @@
 package michlam.genshin_simulator_backend.service;
 
+import io.jsonwebtoken.lang.Assert;
 import michlam.genshin_simulator_backend.dto.BaseWeaponDto;
+import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,6 +77,14 @@ public class BaseWeaponServiceTest {
         Assertions.assertEquals("HP", thrillingTales.getSecondary());
         Assertions.assertEquals("", thrillingTales.getPassive_name());
         Assertions.assertEquals("", thrillingTales.getPassive_text());
+    }
+
+    @Test
+    void testGetBaseWeaponsByName_WeaponDoesNotExist() {
+        Assertions.assertThrows(
+                ResourceNotFoundException.class,
+                () -> baseWeaponService.getBaseWeaponByName("FakeWeapon")
+        );
     }
 
 }
