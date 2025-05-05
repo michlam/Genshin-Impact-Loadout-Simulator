@@ -40,17 +40,41 @@ public class BaseWeaponServiceTest {
 
     @Test
     void testGetBaseWeaponsByName_AmosBow() {
-        
+        BaseWeaponDto amosBow = baseWeaponService.getBaseWeaponByName("Amos Bow");
+
+        Assertions.assertEquals("Amos Bow", amosBow.getName());
+        Assertions.assertEquals(5, amosBow.getStar());
+        Assertions.assertEquals(608, amosBow.getAttack());
+        Assertions.assertEquals("Bow", amosBow.getType());
+        Assertions.assertEquals("ATK", amosBow.getSecondary());
+        Assertions.assertEquals("", amosBow.getPassive_name());
+        Assertions.assertEquals("", amosBow.getPassive_text());
     }
 
     @Test
     void testGetBaseWeaponsByName_FavoniusSword() {
+        BaseWeaponDto favSword = baseWeaponService.getBaseWeaponByName("Favonius Sword");
 
+        Assertions.assertEquals("Favonius Sword", favSword.getName());
+        Assertions.assertEquals(4, favSword.getStar());
+        Assertions.assertEquals(454, favSword.getAttack());
+        Assertions.assertEquals("Sword", favSword.getType());
+        Assertions.assertEquals("Energy Recharge", favSword.getSecondary());
+        Assertions.assertEquals("", favSword.getPassive_name());
+        Assertions.assertEquals("", favSword.getPassive_text());
     }
 
     @Test
     void testGetBaseWeaponsByName_ThrillingTalesOfDragonSlayers() {
+        BaseWeaponDto thrillingTales = baseWeaponService.getBaseWeaponByName("Thrilling Tales of Dragon Slayers");
 
+        Assertions.assertEquals("Thrilling Tales of Dragon Slayers", thrillingTales.getName());
+        Assertions.assertEquals(3, thrillingTales.getStar());
+        Assertions.assertEquals(401, thrillingTales.getAttack());
+        Assertions.assertEquals("Catalyst", thrillingTales.getType());
+        Assertions.assertEquals("HP", thrillingTales.getSecondary());
+        Assertions.assertEquals("", thrillingTales.getPassive_name());
+        Assertions.assertEquals("", thrillingTales.getPassive_text());
     }
 
 }
