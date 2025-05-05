@@ -32,6 +32,10 @@ export default function Header() {
                     Characters
                 </NavLink>
 
+                <NavLink to="weapons" style={({isActive}) => isActive ? activeStyles : null} className={"navlink"}>
+                    Weapons
+                </NavLink>
+
                 {sessionStorage.getItem("isLoggedIn") ? logoutElement : loginElement}
             </nav>
             
