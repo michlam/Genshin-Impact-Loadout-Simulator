@@ -1,9 +1,6 @@
 package michlam.genshin_simulator_backend.mapper;
 
-import michlam.genshin_simulator_backend.dto.BaseCharacterDto;
-import michlam.genshin_simulator_backend.dto.UserCharacterDto;
-import michlam.genshin_simulator_backend.dto.UserDto;
-import michlam.genshin_simulator_backend.dto.UserTeamDto;
+import michlam.genshin_simulator_backend.dto.*;
 import michlam.genshin_simulator_backend.entity.*;
 import michlam.genshin_simulator_backend.entity.keys.UserTeamKey;
 
@@ -42,6 +39,30 @@ public class Mapper {
                 baseCharacterDto.getWeapon_type()
         );
     }
+
+    public static BaseWeaponDto mapToBaseWeaponDto(BaseWeapon baseWeapon) {
+        return new BaseWeaponDto(
+                baseWeapon.getName(),
+                baseWeapon.getType(),
+                baseWeapon.getStar(),
+                baseWeapon.getAttack(),
+                baseWeapon.getSecondary(),
+                baseWeapon.getPassive_name(),
+                baseWeapon.getPassive_text()
+        );
+    }
+
+    public static BaseWeapon mapToBaseWeapon(BaseWeaponDto baseWeaponDto) {
+        return new BaseWeapon(
+                baseWeaponDto.getName(),
+                baseWeaponDto.getType(),
+                baseWeaponDto.getStar(),
+                baseWeaponDto.getAttack(),
+                baseWeaponDto.getSecondary(),
+                baseWeaponDto.getPassive_name(),
+                baseWeaponDto.getPassive_text()
+        );
+    }
     
     public static UserCharacterDto mapToUserCharacterDto(UserCharacter userCharacter) {
         return new UserCharacterDto(
@@ -72,4 +93,5 @@ public class Mapper {
                 userTeamDto.getCharacter_name_4()
         );
     }
+
 }

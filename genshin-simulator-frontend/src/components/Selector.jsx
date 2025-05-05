@@ -13,12 +13,19 @@ export default function Selector(props) {
         let charElements = baseCharacters.map((char) => {
             if (!userCharacters.includes(char.name)) return null;
 
-            const imagePath = "../../characters/avatars/ui-avataricon-" + char.name.toLowerCase() + ".png";
+            let imagePath = "../../characters/avatars/ui-avataricon-" + char.name.toLowerCase() + ".png";
             const bgClass = char.star == 5 ? "five-star" : "four-star";
             const selectedClass = teamChars.includes(char.name) ? "selected" : "";
         
             let name = char.name.split(" ");
             name = name[name.length - 1];
+
+            // Exceptions for image path
+            if (char.name == "Kaedehara Kazuha") imagePath = "../../characters/avatars/ui-avataricon-kaedehara-kazuha.png";
+            if (char.name == "Hu Tao") {
+                imagePath = "../../characters/avatars/ui-avataricon-hu-tao.png";
+                name = "Hu Tao";
+            }
 
             return (
                 <div className={`selector-list-item ${bgClass} ${selectedClass}`} onClick={() => updateTeamHandler(teamNum, charNum, char.name)}>
