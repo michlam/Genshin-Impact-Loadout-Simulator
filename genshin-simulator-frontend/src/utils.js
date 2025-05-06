@@ -1,5 +1,3 @@
-import { redirect } from "react-router-dom"
-
 // WE ARE FAKING THE LOGIN WITH LOCAL STORAGE FOR NOW
 export function loginHelper(userId, username, token) {
     sessionStorage.setItem('userId', userId);
