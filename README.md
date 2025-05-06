@@ -3,6 +3,10 @@ A loadout simulator for Genshin Impact to help you try out and build new teams.
 
 ![Demo Gif](./Demo/DemoGif.gif "Demo Gif")
 
+### Demo
+You can try it out at this link: https://michlam-genshin-simulator.netlify.app/.
+While only the frontend is being permanently hosted online, the backend is still being hosted locally and will only be running occasionally. 
+
 ## Project Description
 This project aims to implement a simulator for Genshin Impact teams, characters, and weapons, similar to what is seen in game. This project is also to help me practice my fullstack development and to help me learn Java, Spring, SQL, JavaScript, and React.
 
@@ -21,38 +25,6 @@ This project aims to implement a simulator for Genshin Impact teams, characters,
 4. Github
 5. Postman
 
-### Installation Steps
-1. Clone the repository
-   ```bash
-   git clone https://github.com/michlam/Genshin-Impact-Loadout-Simulator.git
-2. In MySQL Workbench, create a database named "genshin"
-   ```bash
-   create database genshin;
-3. Create the following folders and files in the code
-   ```bash
-   /genshin-simulator-backend/src/main/
-   /genshin-simulator-backend/src/main/application.properties
-4. In application.properties, add this configuration to connect with your daatabase
-   ```bash
-   spring.application.name=genshin-simulator-backend
-   spring.datasource.url=jdbc:mysql://*localhost:3306*/genshin
-   spring.datasource.username=*username*
-   spring.datasource.password=*password*
-
-   spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
-   spring.jpa.hibernate.ddl-auto=update
-   ```
-   Replace *localhost:3306*, *username*, and *password* with your corresponding values.
-
-5. In IntelliJ IDEA, run the GenshinSimulatorBackendApplication.
-6. In Visual Studio Code, go to "/genshin-simulator-frontend/" and run the following
-   ```
-   npm run dev
-   ```
-   You may need to install *react*, *react-router-dom*, and *vite* if you don't have them.
-
-<br />
-
 # Development Logs
 
 ### Features For Future Consideration
@@ -63,12 +35,12 @@ This project aims to implement a simulator for Genshin Impact teams, characters,
 - Deployment
 - Accessibility
 
-### Phase 2 - Currently in progress
+### Phase 2 - Completed 5/6/25
 For the second phase, I plan introduce key upgrades to security and responsiveness, while adding weapons to the web application core functionality. This requires an update to the database schema, backend API, and new frontend pages to be built. Finally, I hope to expand the character selection as well.
-- Users can add a weapon to their account
-- Users can assign weapons to characters
-- Users can login with web tokens stored with cookies
-- Users can responsively resize the web application
+- Users can view a list of weapons until patch 2.0.
+- Users can add characters from until patch 2.0.
+- Users can login with web tokens, with passwords encrypted in the database.
+- Users can view the page hosted online.
 
 ### Phase 1 - Completed 3/3/25
 For the first phase, I plan to start small and only implement the basic teams and characters, with very minimal statistical information. The following list summarizes the phase 1 planned features:
