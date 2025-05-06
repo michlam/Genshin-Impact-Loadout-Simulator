@@ -29,7 +29,9 @@ export default function WeaponInfo(props) {
                         <p>{weapon.secondary}</p>
                     </section>
                 </div>
+
                 <img src={imagePath} alt={`${weapon.name} splashart`} loading="lazy"/>
+
                 <div className="weapon-passive">
                     <h4>Passive Coming Soon</h4>
                 </div>
@@ -48,3 +50,4 @@ function getImagePath(weaponName) {
 
     return imagePath;
 }
+

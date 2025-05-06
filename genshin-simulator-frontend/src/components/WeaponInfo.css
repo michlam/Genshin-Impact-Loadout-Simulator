@@ -26,7 +26,7 @@
 
 .weapon-info-container {
     width: 100%;
-    height: 100%;
+
 
     box-shadow: 0px 8px 50px 3px rgba(153, 153, 153, 0.034);
     display: flex;
@@ -40,6 +40,8 @@
     padding: 15px 0px 11px;
     width: 100%;
     text-align: center;
+    font-size: 1.1rem;
+    font-weight: 200;
 
 }
 
@@ -53,36 +55,6 @@
     color: var(--peach-gold);
     font-weight: 50;
 }
-
-.weapon-info-container > button {
-    background-image: linear-gradient(to right, #FF512F 0%, #c2b116  51%, #FF512F  100%); 
-    background-size: 200% auto;
-    border: 1px solid transparent;
-
-    padding: 15px 35px;
-    margin-top: 30px;
-
-    border-radius: 5px;
-    border: none;
-
-    font-family: "Genshin";
-    font-size: 1rem;
-    color: white;   
-    cursor: pointer;
-}
-
-.weapon-info-container > button:hover {
-    background-image: linear-gradient(to right, #bd3d23 0%, #968811  51%, #bd3a20  100%); 
-}
-
-.weapon-info-container > button.unlocked {
-    background-image: none;
-    border: 1px solid var(--cinnabar);
-    color: var(--cinnabar);
-    cursor: default;
-}
-
-
 
 
 
@@ -105,14 +77,20 @@
 
 .weapon-info-details > section > h4 {
     margin: 10px 0px 5px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 50;
 }
 
 .weapon-info-details > section > p {
     margin: 0px 0px 10px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 50;
+}
+
+.weapon-passive {
+    border-top: 1px solid var(--light-blue);
+    width: 100%;
+    text-align: center;
 }
 
 
@@ -124,13 +102,17 @@
 
 
 .weapon-info-border {
+    position: fixed;
+    top: 25%;
+    right: 5%;
+
     margin-left: 5dvw;
     background-color: var(--light-ivory);
-    min-width: 350px;
-    width: 30dvw;
+    min-width: 300px;
+    width: 15dvw;
 
-    min-height: 775px;
-    height: 85vh;
+    /* min-height: 775px;
+    height: 85vh; */
 
     border-radius: 8px;
     box-shadow: 0px 8px 50px 3px rgba(153, 153, 153, 0.034);
