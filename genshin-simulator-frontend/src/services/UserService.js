@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const REST_API_BASE_URL = 'http://localhost:8080/api/users';
+// const REST_API_BASE_URL = 'http://localhost:8080/api/users';
+const REST_API_BASE_URL = 'https://casual-pangolin-seemingly.ngrok-free.app/api/users';
 
 export const signUpUser = (username, password) => {
     const signUpBody = {
@@ -8,7 +9,12 @@ export const signUpUser = (username, password) => {
         "password": password
     };
 
-    return axios.post(REST_API_BASE_URL + "/add", signUpBody);
+    return axios.post(REST_API_BASE_URL + "/add", signUpBody,
+    {
+        headers: {
+            'ngrok-skip-browser-warning': '1' 
+        }
+    });
 }
 
 export const getUserCharactersById = (userId) => {
@@ -18,7 +24,8 @@ export const getUserCharactersById = (userId) => {
 
     return axios.post(REST_API_BASE_URL + "/characters", body, {
         headers: {
-            'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+            'Authorization': `Bearer ${sessionStorage.getItem("token")}`,
+            'ngrok-skip-browser-warning': '1' 
         }
     });
 }
@@ -31,7 +38,8 @@ export const unlockUserCharacter = (userId, charName) => {
 
     return axios.post(REST_API_BASE_URL + "/characters/unlock", body, {
         headers: {
-            'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+            'Authorization': `Bearer ${sessionStorage.getItem("token")}`,
+            'ngrok-skip-browser-warning': '1' 
         }
     });
 }
@@ -43,7 +51,8 @@ export const getUserTeamsById = (userId) => {
 
     return axios.post(REST_API_BASE_URL + "/teams", body, {
         headers: {
-            'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+            'Authorization': `Bearer ${sessionStorage.getItem("token")}`,
+            'ngrok-skip-browser-warning': '1' 
         }
     });
 }
@@ -51,7 +60,8 @@ export const getUserTeamsById = (userId) => {
 export const updateUserTeam = (userTeam) => {
     return axios.put(REST_API_BASE_URL + "/teams", userTeam, {
         headers: {
-            'Authorization': `Bearer ${sessionStorage.getItem("token")}`
+            'Authorization': `Bearer ${sessionStorage.getItem("token")}`,
+            'ngrok-skip-browser-warning': '1' 
         }
     });
 }
