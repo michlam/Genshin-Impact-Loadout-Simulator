@@ -41,6 +41,7 @@ For the second phase, I plan introduce key upgrades to security and responsivene
 - Users can add characters from until patch 2.0.
 - Users can login with web tokens, with passwords encrypted in the database.
 - Users can view the page hosted online.
+- Developers can test the main services through an automated test suite.
 
 ### Phase 1 - Completed 3/3/25
 For the first phase, I plan to start small and only implement the basic teams and characters, with very minimal statistical information. The following list summarizes the phase 1 planned features:
