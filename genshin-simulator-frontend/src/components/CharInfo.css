@@ -141,6 +141,9 @@
     align-items: center;
 
     overflow: hidden;
+    position: sticky;
+    top: 40px;
+    bottom: 40px;
 }
 
 
