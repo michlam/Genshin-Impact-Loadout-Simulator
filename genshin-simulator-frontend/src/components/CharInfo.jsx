@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { unlockUserCharacter } from "../services/UserService";
 import { getUserIdHelper } from "../utils";
 import "./CharInfo.css";

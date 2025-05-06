@@ -4,6 +4,7 @@ import { getUserIdHelper } from "../utils";
 import "./Weapons.css"
 import { useState } from "react";
 import WeaponListItem from "../components/WeaponListItem";
+import WeaponInfo from "../components/WeaponInfo";
 
 export async function loader({ request }) {
     const userId = getUserIdHelper();
@@ -37,6 +38,8 @@ export default function Weapons() {
                 <legend>Weapons</legend>
                 {renderBaseWeapons(baseWeapons, setWeaponFocus)}
             </fieldset>
+
+            {weaponFocus ? <WeaponInfo weapon={weapon} /> : null}
         </main>
     )
 }
