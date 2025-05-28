@@ -9,6 +9,7 @@ import michlam.genshin_simulator_backend.entity.*;
 import michlam.genshin_simulator_backend.entity.keys.UserCharacterKey;
 import michlam.genshin_simulator_backend.entity.keys.UserTeamKey;
 import michlam.genshin_simulator_backend.exception.DuplicateResourceException;
+import michlam.genshin_simulator_backend.exception.InvalidCredentialsException;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import michlam.genshin_simulator_backend.mapper.Mapper;
 import michlam.genshin_simulator_backend.repository.BaseCharacterRepository;
@@ -41,6 +42,14 @@ public class UserServiceImpl implements UserService {
             throw new DuplicateResourceException("Username is already taken");
         }
 
+        if (userDto.getUsername().isEmpty()) {
+            throw new InvalidCredentialsException("Username cannot be empty");
+        }
+
+        if (userDto.getPassword().isEmpty()) {
+            throw new InvalidCredentialsException("Password cannot be empty");
+        }
+
         User savedUser = userRepository.save(user);
         // Initialize all user teams for this user
         for (int i = 1; i <= 8; i++) {
@@ -65,6 +74,14 @@ public class UserServiceImpl implements UserService {
     public UserDto updateUser(UserDto updatedUser) {
         User user = userRepository.findById(updatedUser.getId()).orElseThrow(() ->
                 new ResourceNotFoundException("User does not exist with the given id: " + updatedUser.getId()));
+
+        if (updatedUser.getUsername().isEmpty()) {
+            throw new InvalidCredentialsException("Username cannot be empty");
+        }
+
+        if (updatedUser.getPassword().isEmpty()) {
+            throw new InvalidCredentialsException("Password cannot be empty");
+        }
 
         // Check that we aren't changing the username to something that is taken.
         userRepository.findByUsername(updatedUser.getUsername()).ifPresent(checkUser -> {

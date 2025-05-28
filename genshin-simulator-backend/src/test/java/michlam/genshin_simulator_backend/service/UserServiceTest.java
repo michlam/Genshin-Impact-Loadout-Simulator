@@ -8,6 +8,7 @@ import michlam.genshin_simulator_backend.entity.User;
 import michlam.genshin_simulator_backend.entity.UserTeam;
 import michlam.genshin_simulator_backend.entity.keys.UserTeamKey;
 import michlam.genshin_simulator_backend.exception.DuplicateResourceException;
+import michlam.genshin_simulator_backend.exception.InvalidCredentialsException;
 import michlam.genshin_simulator_backend.exception.ResourceNotFoundException;
 import michlam.genshin_simulator_backend.mapper.Mapper;
 import michlam.genshin_simulator_backend.repository.UserCharacterRepository;
@@ -74,6 +75,24 @@ public class UserServiceTest {
     }
 
     @Test
+    void testCreateUser_Fail_EmptyUsername() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("");
+        userDto.setPassword("1234");
+
+        Assertions.assertThrows(InvalidCredentialsException.class, () -> userService.createUser(userDto));
+    }
+
+    @Test
+    void testCreateUser_Fail_EmptyPassword() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("");
+
+        Assertions.assertThrows(InvalidCredentialsException.class, () -> userService.createUser(userDto));
+    }
+
+    @Test
     void testCreateUser_Fail_UsernameExists() {
         UserDto first = new UserDto();
         first.setUsername("test.user.1");
@@ -119,6 +138,30 @@ public class UserServiceTest {
         Assertions.assertEquals(savedUser.getId(), compareUser.getId());
         Assertions.assertEquals(savedUser.getUsername(), compareUser.getUsername());
         Assertions.assertEquals(savedUser.getPassword(), compareUser.getPassword());
+    }
+
+    @Test
+    void testUpdateUser_Failure_EmptyUsername() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("1234");
+
+        UserDto savedUser = userService.createUser(userDto);
+        savedUser.setUsername("");
+
+        Assertions.assertThrows(InvalidCredentialsException.class, () -> userService.updateUser(savedUser));
+    }
+
+    @Test
+    void testUpdateUser_Failure_EmptyPassword() {
+        UserDto userDto = new UserDto();
+        userDto.setUsername("test.user.1");
+        userDto.setPassword("1234");
+
+        UserDto savedUser = userService.createUser(userDto);
+        savedUser.setPassword("");
+
+        Assertions.assertThrows(InvalidCredentialsException.class, () -> userService.updateUser(savedUser));
     }
 
     @Test
